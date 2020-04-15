@@ -4,3 +4,4 @@ El proposito de este repositorio es tener un lugar donde guardar todos los archi
 ## Contribuidores
 José Gabriel Cuadros Cárdenas
 Juan Manuel Dávila Rivera
+Gabriela Linares Chávez
