@@ -1,16 +1,17 @@
 import pygame,time
-
+import Constantes as cst
+constants = cst.Constants
 
 screen=pygame.display.set_mode((300, 300))
 
 def text(str, tuple,n, z,x,s):
-    basicfont = pygame.font.Font("8bit_2.ttf", x)
+    basicfont = pygame.font.Font("Fonts/8bit.ttf", x)
     x, y = tuple
     
     char = ''        
     letter = 0
-    effect = pygame.mixer.Sound('s_beep.wav')
-    effect.play()
+    Beep=constants.efectos.Beep
+    Beep.play()
     for i in range(len(str)):
         pygame.event.pump() ## this is very important if your event queue is not handled properly elsewhere. Alternativly pygame.event.pump() would work.
         time.sleep(s) ##change this for faster or slower text animation
@@ -23,12 +24,11 @@ def text(str, tuple,n, z,x,s):
         
         letter += 1
         if letter%8==0:
-            effect = pygame.mixer.Sound('s_beep.wav')
-            effect.play()
+            Beep.play()
         
             
 def text_name(str, tuple,n, z,x):
-    basicfont = pygame.font.Font("8bit_2.ttf", x)
+    basicfont = pygame.font.Font("Fonts/8bit.ttf", x)
     x, y = tuple
     
     char = ''        

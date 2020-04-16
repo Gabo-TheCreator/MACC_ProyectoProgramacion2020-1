@@ -6,17 +6,17 @@ win = pygame.display.set_mode((500, 500))
 
 pygame.display.set_caption("Trial First Game")
 
-walkRight = [pygame.image.load('R1.png'), pygame.image.load('R2.png'), pygame.image.load('R3.png'),
-             pygame.image.load('R4.png'), pygame.image.load('R5.png'), pygame.image.load('R6.png'),
-             pygame.image.load('R7.png'), pygame.image.load('R8.png'), pygame.image.load('R9.png')]
+# walkRight = [pygame.image.load('R1.png'), pygame.image.load('R2.png'), pygame.image.load('R3.png'),
+#              pygame.image.load('R4.png'), pygame.image.load('R5.png'), pygame.image.load('R6.png'),
+#              pygame.image.load('R7.png'), pygame.image.load('R8.png'), pygame.image.load('R9.png')]
 
-walkLeft = [pygame.image.load('L1.png'), pygame.image.load('L2.png'), pygame.image.load('L3.png'),
-            pygame.image.load('L4.png'), pygame.image.load('L5.png'), pygame.image.load('L6.png'),
-            pygame.image.load('L7.png'), pygame.image.load('L8.png'), pygame.image.load('L9.png')]
+# walkLeft = [pygame.image.load('L1.png'), pygame.image.load('L2.png'), pygame.image.load('L3.png'),
+#             pygame.image.load('L4.png'), pygame.image.load('L5.png'), pygame.image.load('L6.png'),
+#             pygame.image.load('L7.png'), pygame.image.load('L8.png'), pygame.image.load('L9.png')]
 
-bg = pygame.image.load('bg.jpg')
+# bg = pygame.image.load('bg.jpg')
 
-char = pygame.image.load('standing.png')
+# char = pygame.image.load('standing.png')
 
 clock = pygame.time.Clock()
 width = 40
@@ -33,13 +33,14 @@ run = True
 jumpFun = False
 jumpCount = 10
 walkCount = 0
-theme = pygame.mixer.music.load('m_theme.mp3')
-pygame.mixer.music.play(0)
+def music(song):
+    pygame.mixer.music.load(song)
+    pygame.mixer.music.play(-1)
 
 
 def attack():
-    global run, x, y, w, h, r, vel, jumps, clock, char, walkCount, jumpCount, jumpFun
-
+    global run, x, y, w, h, r, vel, jumps, clock, char, walkCount, jumpCount, jumpFun, music
+    music("Sounds/Music/theme.mp3")
     def redrawGameWin():
         global walkCount
 
