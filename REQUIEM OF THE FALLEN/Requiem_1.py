@@ -53,6 +53,8 @@ DEL_n = cons.botones.DEL_n
 DEL_s = cons.botones.DEL_s
 bg_tit = cons.extras.bg_tit
 bg_tit = pygame.transform.scale(bg_tit, (game_width, game_height))
+BACK_n = cons.botones.BACK_n
+BACK_s = cons.botones.BACK_s
 
 # =============================================================================
 
@@ -138,6 +140,7 @@ def mainMenu(): #Índice menú principal
     global index
     global titleImg
     global theme
+    global x
     if left:
         index -= 1
         if index < 0:
@@ -167,18 +170,9 @@ def creditMenu(): #Índice del menú de créditos
     global index_about
     global titleImg
     global theme
-    if left:
-        index_about -= 1
-        if index_about < 0:
-            index_about = 1
-    elif right:
-        index_about += 1
-        if index_about > 1:
-            index_about = 0
-    if index_about == 1:
-        win.blit(EXIT_s, (425, 412.5))
-    elif index_about == 0:
-        win.blit(PLAY_s, (225, 412.5))
+
+    if index_about == 0:
+        win.blit(BACK_s, ((game_width / 2) - 59, 412.5))
     pygame.display.update()
 def namingScreen(): #Índice de la selección de nombre
     global letters
@@ -294,7 +288,7 @@ def idle_menu(pj, x, y): #Aquí va el proceso de animación en la pantalla antes
 # =============================================================================
 
 # =============================================================================
-
+music(main_theme, -1)
 while game: #Procesos del juego
     while menu:
         win.blit(bg_tit, (0, 0))
@@ -320,7 +314,8 @@ while game: #Procesos del juego
             left = False
             right = False
         pygame.time.delay(150)
-        mainMenu()  
+        mainMenu()
+        pygame.mixer.stop()
     if index == 0:
         music(main_theme,-1)
         win.blit(bg_tit, (0, 0))
@@ -404,33 +399,24 @@ while game: #Procesos del juego
         pygame.time.wait(1000)
         win.blit(bg_tit, (0, 0))
         pygame.display.update()
-        one.text("ABOUT", (340, 100), (56, 5, 217), (110, 110, 110), 70, 0.2)
-        one.text("JUAN MANUEL DAVILA RIVERA", (40, 200), (255, 255, 255), (110, 110, 110), 40, 0.05)
-        one.text("GABRIELA LINARES CHAVEZ", (40, 240), (255, 255, 255), (110, 110, 110), 40, 0.05)
-        one.text("JOSE GABRIEL CUADROS CARDENAS", (40, 280), (255, 255, 255), (110, 110, 110), 40, 0.05)
-        one.text("Todos los derechos reservados", (10, 580), (5, 175, 217), (110, 110, 110), 20, 0.1)
-        one.text("2020", (720, 580), (5, 175, 217), (110, 110, 110), 20, 0.1)
+        one.text("ABOUT", (340, 100), (56, 5, 217), (110, 1100), 70, 0.2)
+        one.text("JUAN MANUEL DAVILA RIVERA", (40, 200), (255, 255, 255), (110, 1100), 40, 0.05)
+        one.text("GABRIELA LINARES CHAVEZ", (40, 240), (255, 255, 255), (110, 1100), 40, 0.05)
+        one.text("JOSE GABRIEL CUADROS CARDENAS", (40, 280), (255, 255, 255), (110, 1100), 40, 0.05)
+        one.text("Todos los derechos reservados", (10, 580), (5, 175, 217), (110, 1100), 20, 0.1)
+        one.text("2020", (720, 580), (5, 175, 217), (110, 1100), 20, 0.1)
         while index == 1:
-            win.blit(PLAY_n, (225, 412.5))
-            win.blit(EXIT_n, (425, 412.5))
+            win.blit(BACK_n, ((game_width / 2)- 59, 412.5))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
             keys = pygame.key.get_pressed()
-            if keys[pygame.K_LEFT]:
-                EndLine.play()
-                left = True
-            elif keys[pygame.K_RIGHT]:
-                EndLine.play()
-                right = True
-                left = False
-            elif keys[pygame.K_RETURN]:
+            if keys[pygame.K_RETURN]:
                 if index_about == 0:
                     Confirm.play()
                     pygame.time.wait(2000)
-                    index = 0
-                elif index_about == 1:
-                    index = 2
+                    index = 200
+                    menu = True
             else:
                 left = False
                 right = False
@@ -447,12 +433,12 @@ while game: #Procesos del juego
     if index == -1:
         win.blit(bg_tit, (0, 0))
         pygame.display.update()
-        one.text("Bienvenido a "'Requiem of the Fallen'", un", (40, 40), (255, 255, 255), (110,110,110), 40, 0.1)
-        one.text("juego del tipo RPG por turnos en que tendras", (40, 80), (255, 255, 255), (110,110,110), 40, 0.1)
-        one.text("que SALVAR AL MUNDO.", (40, 120), (255, 255, 255), (110,110,110), 50, 0.2)
-        one.text(("Ahora, " + name), (40, 170), (255, 255, 255), (110, 110, 110), 40, 0.1)
-        one.text(("este sera tu caballero, con el que"), (40, 210), (255, 255, 255), (110, 110, 110), 40, 0.1)
-        one.text(("te enfrentaras a las garras del mal."), (40, 250), (255, 255, 255), (110, 110, 110), 40, 0.1)
+        one.text("Bienvenido a "'Requiem of the Fallen'", un", (40, 40), (255, 255, 255), (110, 1100), 40, 0.1)
+        one.text("juego del tipo RPG por turnos en que tendras", (40, 80), (255, 255, 255), (110, 1100), 40, 0.1)
+        one.text("que SALVAR AL MUNDO.", (40, 120), (255, 255, 255), (110, 1100), 50, 0.2)
+        one.text(("Ahora, " + name), (40, 170), (255, 255, 255), (110, 1100), 40, 0.1)
+        one.text(("este sera tu caballero, con el que"), (40, 210), (255, 255, 255), (110, 1100), 40, 0.1)
+        one.text(("te enfrentaras a las garras del mal."), (40, 250), (255, 255, 255), (110, 1100), 40, 0.1)
         while index == -1:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
