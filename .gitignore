@@ -1,6 +1,10 @@
 ### Python ###
-REQUIEM OF THE FALLEN/.DS_Store
+
+#Ignore file type's
 REQUIEM OF THE FALLEN/__pycache__/*.pyc
 *.pyc
+*.DS_Store
+
+#Ignore IDE's config
 .vscode
 .idea
