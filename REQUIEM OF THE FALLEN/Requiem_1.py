@@ -3,23 +3,23 @@ import Letra_one_by_one as one
 import Constantes
 # =============================================================================
 # DEFINICIÓN DE VARIABLES
-index_about = 0
-index = 0
-index_name_x = 1
-index_name_y = 1
-index_casual = 1
-level = 0
+index_about = 0  #Valor único para la selección del botón en la pantalla de créditos
+index = 0  #Valor que va de 0 a 2 para seleccionar alguno de los botones
+index_name_x = 1 #Valor en x del menú de selección de nombre
+index_name_y = 1 #Valor en y del menú de selección de nombre
+index_casual = 1 #No tiene uso. Planeado para usar cuando el jugador seleccione en la pantalla de presentación del juego
+level = 0  #Seguramente planeado para seleccionar el nivel implícitamente
 name = ""
 letters = {1: "A", 2: "B", 3: "C", 4: "D", 5: "E", 6: "F", 7: "G", 8: "H", 9: "I", 10: "J", 11: "K",
            12: "L", 13: "M", 14: "N", 15: "O", 16: "P", 17: "Q", 18: "R", 19: "S", 20: "T", 21: "U",
            22: "V", 23: "W", 24: "X", 25: "Y", 26: "Z"}
-menu = True
-game = True
+menu = True  #Proceso del menú principal
+game = True  #Proceso del juego en sí
 game_width = 800
 game_height = 600
-count = 0
+count = 0  #Conteo para la selección de fotograma
 cons = Constantes.Constants()
-x = 100
+x = 100  #Valor en x cuyo uso cambia dependiendo de donde se invoque
 
 
 # =============================================================================
@@ -28,9 +28,9 @@ pygame.init()
 
 pygame.display.set_caption("Requiem of the Fallen")
 clock = pygame.time.Clock()
-clock.tick(25)
-win = pygame.display.set_mode((game_width, game_height))
-keys = pygame.key.get_pressed()
+clock.tick(25)  #El juego anda a 25 FPS, creo
+win = pygame.display.set_mode((game_width, game_height)) #Se invoca la pantalla
+keys = pygame.key.get_pressed() #Proceso donde se reciben las teclas (tal vez se puedan omitir las que vienen después)
 
 # =============================================================================
 # SPRITES
@@ -163,6 +163,7 @@ def mainMenu(): #Índice menú principal
         x = 500
     else:
         win.blit(awa, (x, 400))
+        #Aquí la 'x' es para dejar el cuadro de selección en la coordenada x anterior
     pygame.display.update()
 def creditMenu(): #Índice del menú de créditos 
     global awa
@@ -180,7 +181,7 @@ def namingScreen(): #Índice de la selección de nombre
     global a_n, b_n, c_n, d_n, e_n, f_n, g_n, h_n, i_n, j_n, k_n, l_n, m_n, n_n, o_n, p_n, q_n, r_n, s_n, t_n, u_n, v_n, w_n, x_n, y_n, z_n 
     global a_s, b_s, c_s, d_s, e_s, f_s, g_s, h_s, i_s, j_s, k_s, l_s, m_s, n_s, o_s, p_s, q_s, r_s, s_s, t_s, u_s, v_s, w_s, x_s, y_s, z_s 
     global  OK_n, DEL_n, OK_s, DEL_s
-    y = 200
+    y = 200 #Valor en y predeterminado para la letra en el menú de selección de nombre
     if left:
         EndLine.play()
         index_name_x -= 1
@@ -282,7 +283,7 @@ def idle_menu(pj, x, y): #Aquí va el proceso de animación en la pantalla antes
         count = 0
     if idle:
         win.blit(pj[count // 5], (x, y))
-        count += 1
+        count += 1 #Apenas aumenta este conteo, se seleccióna el nuevo sprite cada 5 frames
     pygame.display.update()
 
 # =============================================================================
@@ -348,7 +349,7 @@ while game: #Procesos del juego
                 right = True
                 left = False
             elif keys[pygame.K_RETURN]:  # Selección de la letra para el nombre
-                n = index_name_x + (6 * (index_name_y - 1))
+                n = index_name_x + (6 * (index_name_y - 1)) #A cada letra en el diccionario de arriba se le asigna un número
                 if len(name) < 10 and len(name) > 0:
                     if n <= 26:
                         EndLine.play()
