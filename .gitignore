@@ -1,0 +1,6 @@
+### Python ###
+REQUIEM OF THE FALLEN/.DS_Store
+REQUIEM OF THE FALLEN/__pycache__/*.pyc
+*.pyc
+.vscode
+.idea

@@ -7,42 +7,39 @@ screen=pygame.display.set_mode((300, 300))
 def text(texto, coordenadas, color, fondo, tamaño, tiempo):
     basicfont = pygame.font.Font("Fonts/8bit.ttf", tamaño)
     x, y = coordenadas
-    
-    char = ''        
+
+    char = ''
     letra = 0
     Beep=constants.efectos.Beep
     Beep.play()
-    for i in range(len(texto)):
-        pygame.event.pump() 
-        time.sleep(tiempo) ##cambia la espera entre letras
-        char = char + texto[letra]
-        text = basicfont.render(char, False, color, fondo) 
-        textrect = text.get_rect(topleft=(x, y)) 
+    for _ in range(len(str)):
+        pygame.event.pump() ## this is very important if your event queue is not handled properly elsewhere. Alternativly pygame.event.pump() would work.
+        time.sleep(s) ##change this for faster or slower text animation
+        char = char + str[letter]
+        text = basicfont.render(char, False, n, z) #First tuple is text color, second tuple is background color
+        textrect = text.get_rect(topleft=(x, y)) ## x, y's provided in function call. y coordinate amended by line height where needed
         screen.blit(text, textrect)
-        pygame.display.update(textrect) 
-        
-        
+        pygame.display.update(textrect)
+
+
         letra += 1
         if letra%8==0:
             Beep.play()
-        
-            
+
+
 def text_name(texto, coordenadas, color, fondo,tamaño):
     basicfont = pygame.font.Font("Fonts/8bit.ttf", tamaño)
     x, y = coordenadas
-    
-    char = ''        
+
+    char = ''
     letra = 0
-    
-    for i in range(len(texto)):
+
+    for _ in range(len(str)):
         pygame.event.pump() ## this is very important if your event queue is not handled properly elsewhere. Alternativly pygame.event.pump() would work.
-        
+
         char = char + texto[letra]
         text = basicfont.render(char, False, color, fondo) #First tuple is text color, second tuple is background color
         textrect = text.get_rect(topleft=(x, y)) ## x, y's provided in function call. y coordinate amended by line height where needed
         screen.blit(text, textrect)
-        pygame.display.update(textrect) 
-        letra += 1
-    
-        
- 
+        pygame.display.update(textrect)
+        letter += 1
