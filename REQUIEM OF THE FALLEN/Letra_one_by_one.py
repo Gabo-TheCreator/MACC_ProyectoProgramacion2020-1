@@ -12,7 +12,7 @@ def text(str, tuple,n, z,x,s):
     letter = 0
     Beep=constants.efectos.Beep
     Beep.play()
-    for i in range(len(str)):
+    for _ in range(len(str)):
         pygame.event.pump() ## this is very important if your event queue is not handled properly elsewhere. Alternativly pygame.event.pump() would work.
         time.sleep(s) ##change this for faster or slower text animation
         char = char + str[letter]
@@ -34,7 +34,7 @@ def text_name(str, tuple,n, z,x):
     char = ''        
     letter = 0
     
-    for i in range(len(str)):
+    for _ in range(len(str)):
         pygame.event.pump() ## this is very important if your event queue is not handled properly elsewhere. Alternativly pygame.event.pump() would work.
         
         char = char + str[letter]
@@ -43,6 +43,3 @@ def text_name(str, tuple,n, z,x):
         screen.blit(text, textrect)
         pygame.display.update(textrect) 
         letter += 1
-    
-        
- 
