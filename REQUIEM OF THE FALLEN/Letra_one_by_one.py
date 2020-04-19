@@ -42,4 +42,4 @@ def text_name(texto, coordenadas, color, fondo,tamaño):
         textrect = text.get_rect(topleft=(x, y)) ## x, y's provided in function call. y coordinate amended by line height where needed
         screen.blit(text, textrect)
         pygame.display.update(textrect)
-        letter += 1
+        letra += 1
