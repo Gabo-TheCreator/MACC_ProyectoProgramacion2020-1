@@ -430,6 +430,7 @@ while game: #Procesos del juego
         pygame.display.update()
         one.text("TURNING OFF...", (300, 300), (255, 255, 255), (110, 1100), 40, 0.1)
         win.blit(bg_tit, (0, 0))
+        pygame.time.wait(2000)
         game = False
     if index == -1:
         win.blit(bg_tit, (0, 0))

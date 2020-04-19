@@ -1,5 +1,8 @@
 ### Python ###
 
+#Ignore paths
+venv
+
 #Ignore file type's
 REQUIEM OF THE FALLEN/__pycache__/*.pyc
 *.pyc
