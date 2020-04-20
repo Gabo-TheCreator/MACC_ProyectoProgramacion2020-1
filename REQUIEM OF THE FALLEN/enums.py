@@ -15,3 +15,7 @@ class Enums:
         none = -1
         player = 0
         enemy = 1
+
+    class TextAnimations(Enum):
+        none = -1
+        typewriter = 0

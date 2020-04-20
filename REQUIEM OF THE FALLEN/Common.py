@@ -40,6 +40,7 @@ EndLine = cons.efectos.EndLine
 Dial_o = cons.efectos.Dial_o
 Dial_c = cons.efectos.Dial_c
 Confirm = cons.efectos.Confirm
+Beep = cons.efectos.Beep
 
 # ======= LETRAS ===========================================================
 a_n = cons.letras.a_n
