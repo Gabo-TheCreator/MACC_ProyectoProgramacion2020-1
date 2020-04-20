@@ -1,5 +1,5 @@
 import pygame
-
+#hoi
 img="Images/"
 spr="Sprites/"
 bg="BackGround/"
