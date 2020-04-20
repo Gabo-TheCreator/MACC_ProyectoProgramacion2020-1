@@ -107,7 +107,7 @@ class Constants:
 
     # ========================================================================
     # ========== SONIDOS  ====================================================
-    class música:
+    class musica:
         mus = snd + mus
 
     class efectos:
@@ -135,5 +135,6 @@ class Constants:
         screenWidth = 800
         screenHeight = 600
         screenTitle = "Requiem of the Fallen"
+        generalFont = "Fonts/8bit.ttf"
 
     # ========================================================================

@@ -1,8 +1,8 @@
 import pygame
 from enums import Enums
 from Constantes import Constants
-from mainMenu import mainMenu
-import Common
+from MainMenu import MainMenu
+from Common import *
 
 
 class MainManager:
@@ -29,9 +29,9 @@ class MainManager:
 
     def startGameSession(self):
         while self.session:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.finishGameSession()
+            event = pygame.event.wait()
+            if event.type == pygame.QUIT:
+                self.finishGameSession()
 
             thisState = self.screenState
             thisWindow = self.screen
@@ -40,7 +40,8 @@ class MainManager:
             if thisState == screens.none:
                 self.finishGameSession()
             elif thisState == screens.mainMenu:
-                mainMenu(thisWindow)
+                mainMenu = MainMenu(thisWindow)
+                mainMenu.loadScreen()
             elif thisState == screens.selectName:
                 print("Select name - load view")
             elif thisState == screens.inGame:
@@ -56,6 +57,7 @@ class MainManager:
     def finishGameSession(self):
         print("Closing at screen ~> {0}".format(self.screenState))
         self.session = False
+
 
 
 

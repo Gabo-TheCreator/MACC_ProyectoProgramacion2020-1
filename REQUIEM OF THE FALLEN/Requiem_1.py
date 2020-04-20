@@ -57,7 +57,7 @@ BACK_s = cons.botones.BACK_s
 # =============================================================================
 
 # THEMES/SOUND EFFECTS
-mus = cons.música.mus
+mus = cons.musica.mus
 main_theme = "theme.mp3"
 menu_theme = "name.mp3"
 low_mana = cons.efectos.low_mana

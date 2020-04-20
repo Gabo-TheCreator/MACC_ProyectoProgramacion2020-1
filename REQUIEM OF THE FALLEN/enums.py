@@ -19,3 +19,14 @@ class Enums:
     class TextAnimations(Enum):
         none = -1
         typewriter = 0
+
+    class MainMenu:
+        class Button(Enum):
+            play = 0
+            about = 1
+            exit = 2
+
+        class directions(Enum):
+            none = -1
+            right = 0
+            left = 1

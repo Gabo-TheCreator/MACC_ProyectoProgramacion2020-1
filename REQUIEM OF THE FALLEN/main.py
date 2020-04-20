@@ -1,4 +1,4 @@
-from mainManager import MainManager
+from MainManager import MainManager
 from Constantes import Constants
 
 mainManager = MainManager(Constants.generalSettings.screenWidth,

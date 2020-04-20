@@ -6,8 +6,8 @@ from enums import Enums
 constants = cst.Constants
 
 
-# ======= ADD TEXT IN COORDS =========================================================
-def text(screen, text, coords, color, backgroundColor, size, __time, animationType=Enums.TextAnimations.none):
+# ======= DRAW TEXT IN COORDS =========================================================
+def drawText(screen, text, coords, color, backgroundColor, size, __time, animationType=Enums.TextAnimations.none):
     shouldBeep = True
 
     if animationType == Enums.TextAnimations.none:
@@ -19,7 +19,7 @@ def text(screen, text, coords, color, backgroundColor, size, __time, animationTy
         __time = __time
         shouldBeep = True
 
-    basicfont = pygame.font.Font("Fonts/8bit.ttf", size)
+    basicfont = pygame.font.Font(constants.generalSettings.generalFont, size)
     x, y = coords
     char = ""
     letter = 0
@@ -31,8 +31,7 @@ def text(screen, text, coords, color, backgroundColor, size, __time, animationTy
         time.sleep(__time)  ##change this for faster or slower text animation
         char = char + text[letter]
         txt = basicfont.render(char, False, color, backgroundColor)  # First tuple is text color, second tuple is background color
-        textrect = txt.get_rect(
-            topleft=(x, y))  ## x, y's provided in function call. y coordinate amended by line height where needed
+        textrect = txt.get_rect(topleft=(x, y))  ## x, y's provided in function call. y coordinate amended by line height where needed
         screen.blit(txt, textrect)
         pygame.display.update(textrect)
 
@@ -42,3 +41,8 @@ def text(screen, text, coords, color, backgroundColor, size, __time, animationTy
                 common.Beep.play()
 
     common.EndLine.play()
+
+# ======= PLAY MUSIC =========================================================
+def music(song, times): #Añadir música
+    pygame.mixer.music.load(constants.musica.mus+song)
+    pygame.mixer.music.play(times)
