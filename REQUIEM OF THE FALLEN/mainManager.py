@@ -1,0 +1,63 @@
+import pygame
+from enums import Enums
+from Constantes import Constants
+from mainMenu import mainMenu
+import Common
+
+
+class MainManager:
+    screen: pygame.surface = None
+    screenState: Enums.Screens = None
+    session: bool = None
+
+    def __init__(self, width=0, height=0):
+        pygame.init()
+        pygame.mixer.init()
+
+        self.session = True
+
+        self.screen = pygame.display.set_mode((width, height))
+        pygame.display.set_caption(Constants.generalSettings.screenTitle)
+
+    def initMainMenu(self):
+        print("set .mainMenu as actual screen")
+        self.screenState = Enums.Screens.mainMenu
+
+    def initSelectName(self):
+        print("set .selectName as actual screen")
+        self.screenState = Enums.Screens.selectName
+
+    def startGameSession(self):
+        while self.session:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.finishGameSession()
+
+            thisState = self.screenState
+            thisWindow = self.screen
+            screens = Enums.Screens
+
+            if thisState == screens.none:
+                self.finishGameSession()
+            elif thisState == screens.mainMenu:
+                mainMenu(thisWindow)
+            elif thisState == screens.selectName:
+                print("Select name - load view")
+            elif thisState == screens.inGame:
+                print("In Game - load view")
+            elif thisState == screens.about:
+                print("About - load view")
+            elif thisState == screens.confirmExit:
+                print("Confirm exit - load view")
+
+            # Update the screen each time the "While session" do a loop
+            pygame.display.update()
+
+    def finishGameSession(self):
+        print("Closing at screen ~> {0}".format(self.screenState))
+        self.session = False
+
+
+
+
+
