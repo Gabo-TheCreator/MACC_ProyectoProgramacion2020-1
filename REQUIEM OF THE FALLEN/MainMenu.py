@@ -4,6 +4,7 @@ import Common
 from Constantes import Constants
 from ScreenProtocol import ScreenProtocol
 from enums import Enums
+from MainMenuButtonsInteractor import MainMenuButtonsInteractor
 
 
 class MainMenu(ScreenProtocol):
@@ -12,11 +13,14 @@ class MainMenu(ScreenProtocol):
     common = Common
     cons = Constants
 
+    buttonsInteractor = MainMenuButtonsInteractor()
+
+
     def __init__(self, screen):
         # Initialize Screen
         self.screen = screen
 
-    def loadScreen(self):
+    def loadView(self):
         # Initialize
         self.screen.blit(self.common.bg_tit, (0, 0))
         self.screen.blit(self.common.title, ((self.cons.generalSettings.screenWidth / 2) - 216, 100))
@@ -29,31 +33,16 @@ class MainMenu(ScreenProtocol):
             key = event.key
             if key == K_LEFT:
                 print("Key left")
+                self.buttonsInteractor.buttonIndex = self.buttonsInteractor.validateNewIndexPosition(self.buttonsInteractor.buttonIndex,
+                                                                                                     Enums.MainMenu.directions.left)
+                print(self.buttonsInteractor.buttonIndex)
             elif key == K_RIGHT:
                 print("Key Right")
+                self.buttonsInteractor.buttonIndex = self.buttonsInteractor.validateNewIndexPosition(self.buttonsInteractor.buttonIndex,
+                                                                                                     Enums.MainMenu.directions.right)
+                print(self.buttonsInteractor.buttonIndex)
 
-    def validateNewIndexPosition(self,direction=Enums.MainMenu.directions.none):
-        directions = Enums.MainMenu.directions
-
-        if direction == directions.left:
-            print("Left")
-        elif direction == directions.right:
-            print("Right")
-        elif direction == directions.none:
-            print("None")
-
-        # allActions = {
-        #     Enums.MainMenu.Button.play.name: Enums.MainMenu.Button.play.value,
-        #     Enums.MainMenu.Button.about.name: Enums.MainMenu.Button.about.value,
-        #     Enums.MainMenu.Button.exit.name: Enums.MainMenu.Button.exit.value
-        # }
-        #
-        # for key in allActions:
-        #     print(key + " " + str(allActions.get(key, "")))
-            
-        return 0
-
-    def reloadButtonViewsFromIndex(self,newIndex):
+    def reloadSelectedButtonInIndex(self,newIndex):
         print("Update with to focus on index ~>")
         print(newIndex)
 

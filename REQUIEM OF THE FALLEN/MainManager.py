@@ -41,7 +41,7 @@ class MainManager:
                 self.finishGameSession()
             elif thisState == screens.mainMenu:
                 mainMenu = MainMenu(thisWindow)
-                mainMenu.loadScreen()
+                mainMenu.loadView()
             elif thisState == screens.selectName:
                 print("Select name - load view")
             elif thisState == screens.inGame:

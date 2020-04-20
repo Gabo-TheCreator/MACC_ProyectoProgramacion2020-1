@@ -5,5 +5,8 @@ class About(ScreenProtocol):
     def __init__(self):
         print("Init")
 
-    def loadScreen(self):
-        print("loadScreen")
+    def loadView(self):
+        print("loadView")
+
+    def loadData(self):
+        print("loadData")
