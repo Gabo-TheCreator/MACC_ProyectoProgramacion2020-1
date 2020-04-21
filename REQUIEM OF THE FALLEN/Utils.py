@@ -40,7 +40,8 @@ def drawText(screen, text, coords, color, backgroundColor, size, __time, animati
             if shouldBeep:
                 common.Beep.play()
 
-    common.EndLine.play()
+    if shouldBeep:
+        common.EndLine.play()
 
 # ======= PLAY MUSIC =========================================================
 def music(song, times): #Añadir música

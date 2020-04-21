@@ -2,6 +2,7 @@ import pygame
 from enums import Enums
 from Constantes import Constants
 from MainMenu import MainMenu
+from about import About
 from Common import *
 
 
@@ -27,6 +28,10 @@ class MainManager:
         print("set .selectName as actual screen")
         self.screenState = Enums.Screens.selectName
 
+    def initAbout(self):
+        print("set .about as actual screen")
+        self.screenState = Enums.Screens.about
+
     def startGameSession(self):
         while self.session:
             event = pygame.event.wait()
@@ -48,6 +53,8 @@ class MainManager:
                 print("In Game - load view")
             elif thisState == screens.about:
                 print("About - load view")
+                about = About(thisWindow)
+                about.loadView()
             elif thisState == screens.confirmExit:
                 print("Confirm exit - load view")
 
@@ -57,9 +64,3 @@ class MainManager:
     def finishGameSession(self):
         print("Closing at screen ~> {0}".format(self.screenState))
         self.session = False
-
-
-
-
-
-

@@ -1,10 +1,10 @@
 import pygame
-from pygame.locals import *
 import Common
-from Constantes import Constants
-from ScreenProtocol import ScreenProtocol
-from enums import Enums
 from MainMenuButtonsInteractor import MainMenuButtonsInteractor
+from ScreenProtocol import ScreenProtocol
+from Constantes import Constants
+from enums import Enums
+from pygame.locals import *
 
 
 class MainMenu(ScreenProtocol):
@@ -41,6 +41,8 @@ class MainMenu(ScreenProtocol):
                 self.buttonsInteractor.buttonIndex = self.buttonsInteractor.validateNewIndexPosition(self.buttonsInteractor.buttonIndex,
                                                                                                      Enums.MainMenu.directions.right)
                 print(self.buttonsInteractor.buttonIndex)
+            elif key == K_RETURN:
+                print("Enter xd")
 
     def reloadSelectedButtonInIndex(self,newIndex):
         print("Update with to focus on index ~>")
