@@ -3,6 +3,7 @@ from enums import Enums
 from Constantes import Constants
 from MainMenu import MainMenu
 from about import About
+from introduction import Introduction
 from Common import *
 
 
@@ -32,6 +33,10 @@ class MainManager:
         print("set .about as actual screen")
         self.screenState = Enums.Screens.about
 
+    def initIntroduction(self):
+        print("set .about as actual screen")
+        self.screenState = Enums.Screens.introduction
+
     def startGameSession(self):
         while self.session:
             event = pygame.event.wait()
@@ -49,12 +54,15 @@ class MainManager:
                 mainMenu.loadView()
             elif thisState == screens.selectName:
                 print("Select name - load view")
-            elif thisState == screens.inGame:
+            elif thisState == screens.introduction:
                 print("In Game - load view")
+                introduction = Introduction(thisWindow)
+                introduction.loadView()
             elif thisState == screens.about:
                 print("About - load view")
                 about = About(thisWindow)
                 about.loadView()
+                self.initMainMenu()
             elif thisState == screens.confirmExit:
                 print("Confirm exit - load view")
 

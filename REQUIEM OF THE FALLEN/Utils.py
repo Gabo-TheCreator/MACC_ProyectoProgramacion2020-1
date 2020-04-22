@@ -28,7 +28,7 @@ def drawText(screen, text, coords, color, backgroundColor, size, __time, animati
 
     for _ in range(len(text)):
         pygame.event.pump()  ## this is very important if your event queue is not handled properly elsewhere. Alternativly pygame.event.pump() would work.
-        time.sleep(__time)  ##change this for faster or slower text animation
+        pygame.time.delay(__time)  ##change this for faster or slower text animation
         char = char + text[letter]
         txt = basicfont.render(char, False, color, backgroundColor)  # First tuple is text color, second tuple is background color
         textrect = txt.get_rect(topleft=(x, y))  ## x, y's provided in function call. y coordinate amended by line height where needed
