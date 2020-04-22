@@ -9,7 +9,8 @@ class Enums:
         selectName = 1
         inGame = 2
         about = 3
-        confirmExit = 4
+        introduction = 4
+        confirmExit = 5
 
     class CharaterType(Enum):
         none = -1

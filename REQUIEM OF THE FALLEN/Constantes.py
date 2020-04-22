@@ -122,11 +122,17 @@ class Constants:
 # ========  SPRITES  =====================================================
     class sprites:
         class Virus:
-            ani_l = [pygame.image.load(img + spr + "Virus0.png"),
-                     pygame.image.load(img + spr + "Virus1.png"),
-                     pygame.image.load(img + spr + "Virus2.png"),
-                     pygame.image.load(img + spr + "Virus3.png"),
-                     pygame.image.load(img + spr + "Virus4.png")]
+            Virus_1 = pygame.image.load(img + spr + "Virus0.png")
+            Virus_2 = pygame.image.load(img + spr + "Virus1.png")
+            Virus_3 = pygame.image.load(img + spr + "Virus2.png")
+            Virus_4 = pygame.image.load(img + spr + "Virus3.png")
+            Virus_5 = pygame.image.load(img + spr + "Virus4.png")
+
+            ani_l = [pygame.transform.scale(Virus_1, (100,100)),
+                     pygame.transform.scale(Virus_2, (100,100)),
+                     pygame.transform.scale(Virus_3, (100,100)),
+                     pygame.transform.scale(Virus_4, (100,100)),
+                     pygame.transform.scale(Virus_5, (100,100))]
     # ========================================================================
     # ========  GENERAL SETTINGS  ============================================
     class generalSettings:

@@ -1,11 +1,11 @@
-import pygame, time
+import pygame
 import Common
 from pygame.locals import *
 from Utils import *
 from Constantes import Constants
 from ScreenProtocol import ScreenProtocol
 from enums import Enums
-from MainMenuButtonsInteractor import MainMenuButtonsInteractor
+
 
 class About(ScreenProtocol):
 
@@ -28,7 +28,7 @@ class About(ScreenProtocol):
                  Enums.TextAnimations.typewriter)
         drawText(self.screen, "JOSE GABRIEL CUADROS CARDENAS", (100, 280), self.cons.colors.white, self.cons.colors.trasparent, 40, 0.1,
                  Enums.TextAnimations.typewriter)
-        drawText(self.screen, "TODOS LOS DERECHOS RESERVADOS. 2020.", (10, 570), self.cons.colors.lightPurple, self.cons.colors.trasparent, 30, 0.1,
+        drawText(self.screen, "ALL RIGHTS RESERVED. 2020.", (10, 570), self.cons.colors.lightPurple, self.cons.colors.trasparent, 30, 0.1,
                  Enums.TextAnimations.none)
         drawText(self.screen, "PURO MACC", (650, 570), self.cons.colors.cyan, self.cons.colors.trasparent, 30, 0.1,
                  Enums.TextAnimations.none)
@@ -40,8 +40,7 @@ class About(ScreenProtocol):
                 key = event.key
                 if key == K_RETURN:
                     self.screen.blit(Common.BACK_n, (300, 400))
-                    Common.Confirm.play()
-
+                    Common.exit_sfx.play()
                     break
 
 
