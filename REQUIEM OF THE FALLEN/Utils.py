@@ -23,8 +23,8 @@ def drawText(screen, text, coords, color, backgroundColor, size, __time, animati
     x, y = coords
     char = ""
     letter = 0
-    if shouldBeep:
-        common.Beep.play()
+    # if shouldBeep:
+        # common.Beep.play()
 
     for _ in range(len(text)):
         pygame.event.pump()  ## this is very important if your event queue is not handled properly elsewhere. Alternativly pygame.event.pump() would work.
@@ -36,14 +36,15 @@ def drawText(screen, text, coords, color, backgroundColor, size, __time, animati
         pygame.display.update(textrect)
 
         letter += 1
-        if letter % 8 == 0:
-            if shouldBeep:
-                common.Beep.play()
+        # if letter % 8 == 0:
+            # if shouldBeep:
+                # common.Beep.play()
 
-    if shouldBeep:
-        common.EndLine.play()
+    # if shouldBeep:
+        # common.EndLine.play()
 
 # ======= PLAY MUSIC =========================================================
 def music(song, times): #Añadir música
+    print("PLaying music")
     pygame.mixer.music.load(constants.musica.mus+song)
     pygame.mixer.music.play(times)

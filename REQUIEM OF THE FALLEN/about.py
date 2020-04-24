@@ -19,22 +19,26 @@ class About(ScreenProtocol):
 
     def loadView(self):
         # Initialize
-        self.screen.blit(self.common.bg_tit, (0, 0))
-        drawText(self.screen, "ABOUT", (300,100), self.cons.colors.lightPurple, self.cons.colors.trasparent,60,0.2,
-                   Enums.TextAnimations.typewriter)
-        drawText(self.screen, "JUAN MANUEL DAVILA RIVERA", (100, 200), self.cons.colors.white, self.cons.colors.trasparent, 40, 0.1,
-                   Enums.TextAnimations.typewriter)
-        drawText(self.screen, "GABRIELA LINARES CHAVEZ", (100, 240), self.cons.colors.white, self.cons.colors.trasparent, 40, 0.1,
-                 Enums.TextAnimations.typewriter)
-        drawText(self.screen, "JOSE GABRIEL CUADROS CARDENAS", (100, 280), self.cons.colors.white, self.cons.colors.trasparent, 40, 0.1,
-                 Enums.TextAnimations.typewriter)
-        drawText(self.screen, "ALL RIGHTS RESERVED. 2020.", (10, 570), self.cons.colors.lightPurple, self.cons.colors.trasparent, 30, 0.1,
-                 Enums.TextAnimations.none)
-        drawText(self.screen, "PURO MACC", (650, 570), self.cons.colors.cyan, self.cons.colors.trasparent, 30, 0.1,
-                 Enums.TextAnimations.none)
-        self.screen.blit(Common.BACK_s, (300, 400))
-        pygame.display.update()
         while True:
+            self.screen.blit(self.common.bg_tit, (0, 0))
+
+            drawText(self.screen, "ABOUT", (300, 100), self.cons.colors.lightPurple, self.cons.colors.trasparent, 60, 2,
+                     Enums.TextAnimations.typewriter)
+            drawText(self.screen, "JUAN MANUEL DAVILA RIVERA", (100, 200), self.cons.colors.white,
+                     self.cons.colors.trasparent, 40, 1, Enums.TextAnimations.typewriter)
+            drawText(self.screen, "GABRIELA LINARES CHAVEZ", (100, 240), self.cons.colors.white,
+                     self.cons.colors.trasparent, 40, 1, Enums.TextAnimations.typewriter)
+            drawText(self.screen, "JOSE GABRIEL CUADROS CARDENAS", (100, 280), self.cons.colors.white,
+                     self.cons.colors.trasparent, 40, 1, Enums.TextAnimations.typewriter)
+            drawText(self.screen, "ALL RIGHTS RESERVED. 2020.", (10, 570), self.cons.colors.lightPurple,
+                     self.cons.colors.trasparent, 30, 1, Enums.TextAnimations.none)
+            drawText(self.screen, "PURO MACC", (650, 570), self.cons.colors.cyan, self.cons.colors.trasparent, 30, 1,
+                     Enums.TextAnimations.none)
+            self.screen.blit(Common.BACK_s, (300, 400))
+            pygame.display.update()
+
+            pygame.event.clear() #Clear all the queued elements that were loaded in the mean while the text was getting drawed
+
             event = pygame.event.wait()
             if event.type == KEYDOWN:
                 key = event.key
@@ -44,5 +48,6 @@ class About(ScreenProtocol):
                     break
 
 
-def loadData(self):
+
+    def loadData(self):
         print("loadData")

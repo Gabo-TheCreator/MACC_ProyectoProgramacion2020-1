@@ -46,5 +46,5 @@ class Introduction(ScreenProtocol):
                     break
 
 
-def loadData(self):
+    def loadData(self):
         print("loadData")
