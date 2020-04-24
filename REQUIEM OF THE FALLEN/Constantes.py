@@ -15,6 +15,8 @@ att = "Attack/"
 idle = "Idle/"
 cab = "Caballero/"
 vir = "Virus/"
+inv = "Inventory/"
+slash = "Slash/"
 pygame.mixer.init()
 
 
@@ -102,13 +104,21 @@ class Constants:
         OK_s = pygame.transform.scale(OK_s, (80, 45))
         awa = pygame.image.load(img + txt + but + "square_blue.png")
         awa = pygame.transform.scale(awa, (200, 100))
-
+        ATTACK_n = pygame.image.load(img + txt + but + "ATTACKnorm.png")
+        ATTACK_s = pygame.image.load(img + txt + but + "ATTACKselect.png")
+        ATTACK_n = pygame.transform.scale(ATTACK_n, (150, 75))
+        ATTACK_s = pygame.transform.scale(ATTACK_s, (150, 75))
+        INVENTORY_n = pygame.image.load(img + txt + but + "INVENTORYnorm.png")
+        INVENTORY_s = pygame.image.load(img + txt + but + "INVENTORYselect.png")
+        INVENTORY_n = pygame.transform.scale(INVENTORY_n, (150, 75))
+        INVENTORY_s = pygame.transform.scale(INVENTORY_s, (150, 75))
     # ========================================================================
     # ========  IMÁGENES  ====================================================
     class extras:
         bg_tit = pygame.image.load(img + bg + "stone2.jpg")
         bg_2 = pygame.image.load(img + bg + "stone.jpg")
         title = pygame.image.load(img + txt + "REQUIEM.png")
+        selection_border = pygame.image.load(img + bg + "selection_border.png")
 
     # ========================================================================
     # ========== SONIDOS  ====================================================
@@ -126,9 +136,24 @@ class Constants:
         Confirm = pygame.mixer.Sound(snd + sfx + "Confirm.wav")
         Beep = pygame.mixer.Sound(snd + sfx + "beep.wav")
 
+        class Slash_effect:
+            ani_1 = [pygame.image.load(img + spr + sfx + slash + "slash0.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash1.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash2.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash3.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash4.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash5.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash6.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash7.png")]
+
     # ========================================================================
     # ========  SPRITES  =====================================================
     class sprites:
+        class Inventory:
+            health_potion = pygame.image.load(img + spr + inv + "Botella_health.png")
+            boost_potion = pygame.image.load(img + spr + inv + "Botella_boost.png")
+            empty_potion = pygame.image.load(img + spr + inv + "Botella_vacia.png")
+
         class Virus_idle:
             ani_l = [pygame.image.load(img + spr + idle + vir + "Virus_idle0.png"),
                      pygame.image.load(img + spr + idle + vir + "Virus_idle1.png"),
@@ -137,11 +162,11 @@ class Constants:
                      pygame.image.load(img + spr + idle + vir + "Virus_idle4.png")]
 
         class Virus_attack:
-            ani_1 = [pygame.image.load(img + spr + att + vir + "Virus_idle0.png"),
-                     pygame.image.load(img + spr + att + vir + "Virus_idle1.png"),
-                     pygame.image.load(img + spr + att + vir + "Virus_idle2.png"),
-                     pygame.image.load(img + spr + att + vir + "Virus_idle3.png"),
-                     pygame.image.load(img + spr + att + vir + "Virus_idle4.png")]
+            ani_1 = [pygame.image.load(img + spr + att + vir + "Virus_attack0.png"),
+                     pygame.image.load(img + spr + att + vir + "Virus_attack1.png"),
+                     pygame.image.load(img + spr + att + vir + "Virus_attack2.png"),
+                     pygame.image.load(img + spr + att + vir + "Virus_attack3.png"),
+                     pygame.image.load(img + spr + att + vir + "Virus_attack4.png")]
 
         class Caballero_idle:
             ani_l = [pygame.image.load(img + spr + idle + cab + "caballerito_idle0.png"),
