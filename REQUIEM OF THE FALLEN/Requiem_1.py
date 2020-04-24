@@ -34,7 +34,7 @@ keys = pygame.key.get_pressed() #Proceso donde se reciben las teclas (tal vez se
 
 # =============================================================================
 # SPRITES
-Virus = cons.sprites.Virus_idle.ani_l
+Virus = cons.sprites.virusIdle.ani_1
 
 # =============================================================================
 

@@ -136,7 +136,7 @@ class Constants:
         Confirm = pygame.mixer.Sound(snd + sfx + "Confirm.wav")
         Beep = pygame.mixer.Sound(snd + sfx + "beep.wav")
 
-        class Slash_effect:
+        class slashEffect:
             ani_1 = [pygame.image.load(img + spr + sfx + slash + "slash0.png"),
                      pygame.image.load(img + spr + sfx + slash + "slash1.png"),
                      pygame.image.load(img + spr + sfx + slash + "slash2.png"),
@@ -154,28 +154,28 @@ class Constants:
             boost_potion = pygame.image.load(img + spr + inv + "Botella_boost.png")
             empty_potion = pygame.image.load(img + spr + inv + "Botella_vacia.png")
 
-        class Virus_idle:
+        class virusIdle:
             ani_l = [pygame.image.load(img + spr + idle + vir + "Virus_idle0.png"),
                      pygame.image.load(img + spr + idle + vir + "Virus_idle1.png"),
                      pygame.image.load(img + spr + idle + vir + "Virus_idle2.png"),
                      pygame.image.load(img + spr + idle + vir + "Virus_idle3.png"),
                      pygame.image.load(img + spr + idle + vir + "Virus_idle4.png")]
 
-        class Virus_attack:
-            ani_1 = [pygame.image.load(img + spr + att + vir + "Virus_attack0.png"),
+        class virusAttack:
+            ani_2 = [pygame.image.load(img + spr + att + vir + "Virus_attack0.png"),
                      pygame.image.load(img + spr + att + vir + "Virus_attack1.png"),
                      pygame.image.load(img + spr + att + vir + "Virus_attack2.png"),
                      pygame.image.load(img + spr + att + vir + "Virus_attack3.png"),
                      pygame.image.load(img + spr + att + vir + "Virus_attack4.png")]
 
-        class Caballero_idle:
+        class caballeroIdle:
             ani_l = [pygame.image.load(img + spr + idle + cab + "caballerito_idle0.png"),
                      pygame.image.load(img + spr + idle + cab + "caballerito_idle1.png"),
                      pygame.image.load(img + spr + idle + cab + "caballerito_idle2.png"),
                      pygame.image.load(img + spr + idle + cab + "caballerito_idle3.png"),
                      pygame.image.load(img + spr + idle + cab + "caballerito_idle4.png")]
 
-        class Caballero_attack:
+        class caballeroAttack:
             ani_1 = [pygame.image.load(img + spr + att + cab + "caballerito_attack0.png"),
                      pygame.image.load(img + spr + att + cab + "caballerito_attack1.png"),
                      pygame.image.load(img + spr + att + cab + "caballerito_attack2.png"),
