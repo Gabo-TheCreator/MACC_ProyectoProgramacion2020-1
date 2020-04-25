@@ -23,13 +23,14 @@ class About(ScreenProtocol):
 
     def loadView(self):
         # Initialize
-
+        self.common.Confirm.play()
+        waitBeforeLoadingNextActions(self.mainManager.screenState)
         self.screen.blit(self.common.bg_tit, (0, 0))
 
-        drawText(self.screen, "ABOUT", (300, 100), self.cons.colors.lightPurple, self.cons.colors.trasparent, 60, 2, Enums.TextAnimations.typewriter)
-        drawText(self.screen, "JUAN MANUEL DAVILA RIVERA", (100, 200), self.cons.colors.white, self.cons.colors.trasparent, 40, 1, Enums.TextAnimations.typewriter)
-        drawText(self.screen, "GABRIELA LINARES CHAVEZ", (100, 240), self.cons.colors.white, self.cons.colors.trasparent, 40, 1, Enums.TextAnimations.typewriter)
-        drawText(self.screen, "JOSE GABRIEL CUADROS CARDENAS", (100, 280), self.cons.colors.white, self.cons.colors.trasparent, 40, 1, Enums.TextAnimations.typewriter)
+        drawText(self.screen, "ABOUT", (300, 100), self.cons.colors.lightPurple, self.cons.colors.trasparent, 60, 200, Enums.TextAnimations.typewriter)
+        drawText(self.screen, "JUAN MANUEL DAVILA RIVERA", (100, 200), self.cons.colors.white, self.cons.colors.trasparent, 40, 100, Enums.TextAnimations.typewriter)
+        drawText(self.screen, "GABRIELA LINARES CHAVEZ", (100, 240), self.cons.colors.white, self.cons.colors.trasparent, 40, 100, Enums.TextAnimations.typewriter)
+        drawText(self.screen, "JOSE GABRIEL CUADROS CARDENAS", (100, 280), self.cons.colors.white, self.cons.colors.trasparent, 40, 100, Enums.TextAnimations.typewriter)
         drawText(self.screen, "ALL RIGHTS RESERVED. 2020.", (10, 570), self.cons.colors.lightPurple, self.cons.colors.trasparent, 30, 1, Enums.TextAnimations.none)
         drawText(self.screen, "PURO MACC", (650, 570), self.cons.colors.cyan, self.cons.colors.trasparent, 30, 1, Enums.TextAnimations.none)
         self.screen.blit(Common.BACK_s, (300, 400))
@@ -45,6 +46,7 @@ class About(ScreenProtocol):
             if key[pygame.K_RETURN]:
                 self.screen.blit(Common.BACK_n, (300, 400))
                 Common.exit_sfx.play()
+                waitBeforeLoadingNextActions(self.mainManager.screenState)
                 if self.redirectToScreen(0):
                     break
 

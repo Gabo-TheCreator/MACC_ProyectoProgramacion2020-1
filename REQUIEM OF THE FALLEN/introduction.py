@@ -12,13 +12,20 @@ class Introduction(ScreenProtocol):
     screen: pygame.surface = None
     common = Common
     cons = Constants
+    mainManager = None
 
-    def __init__(self, screen):
+    def __init__(self, screen, mainManager=None):
 
         self.screen = screen
 
+        if mainManager != None:
+            self.mainManager = mainManager
+
+
     def loadView(self):
         # Initialize
+        self.common.Confirm.play()
+        waitBeforeLoadingNextActions(self.mainManager.screenState)
         self.screen.blit(Constants.extras.bg_2, (0, 0))
         drawText(self.screen, "REQUIEM OF THE FALLEN", (110,100), self.cons.colors.lightPurple, self.cons.colors.trasparent,60,0.2,
                    Enums.TextAnimations.none)

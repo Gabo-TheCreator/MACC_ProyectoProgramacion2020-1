@@ -53,7 +53,7 @@ class MainManager:
                 print("Select name - load view")
             elif thisState == screens.introduction:
                 print("introduction - load view")
-                introduction = Introduction(thisWindow)
+                introduction = Introduction(thisWindow, self)
                 introduction.loadView()
             elif thisState == screens.about:
                 print("About - load view")

@@ -75,8 +75,9 @@ class MainMenu(ScreenProtocol):
     def redirectToScreen(self, selectedButtonIndex):
         # -screenIndex: is the index that we should go to based on all the buttons indexes
         if selectedButtonIndex == 0: #PLAY
+            self.mainManager.initIntroduction()
             #Need to be implemented
-            return False
+            return True
         elif selectedButtonIndex == 1: #ABOUT
             self.mainManager.initAbout()
             return True
