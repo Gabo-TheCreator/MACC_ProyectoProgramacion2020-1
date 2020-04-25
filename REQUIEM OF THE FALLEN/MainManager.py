@@ -40,10 +40,6 @@ class MainManager:
 
     def startGameSession(self):
         while self.session:
-            event = pygame.event.wait()
-            if event.type == pygame.QUIT:
-                self.finishGameSession()
-
             thisState = self.screenState
             thisWindow = self.screen
             screens = Enums.Screens
