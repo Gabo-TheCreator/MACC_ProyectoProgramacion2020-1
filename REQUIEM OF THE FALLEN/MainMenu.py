@@ -72,15 +72,15 @@ class MainMenu(ScreenProtocol):
             self.screen.blit(self.common.awa, (500, 400))
             self.screen.blit(self.common.EXIT_s, (525, 412.5))
 
-    def redirectToScreen(self,screenIndex):
+    def redirectToScreen(self, selectedButtonIndex):
         # -screenIndex: is the index that we should go to based on all the buttons indexes
-        if screenIndex == 0: #PLAY
+        if selectedButtonIndex == 0: #PLAY
             #Need to be implemented
             return False
-        elif screenIndex == 1: #ABOUT
+        elif selectedButtonIndex == 1: #ABOUT
             self.mainManager.initAbout()
             return True
-        elif  screenIndex == 2: #EXIT
+        elif  selectedButtonIndex == 2: #EXIT
             self.mainManager.finishGameSession()
             return True
 

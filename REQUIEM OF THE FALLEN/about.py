@@ -50,7 +50,7 @@ class About(ScreenProtocol):
     def loadData(self):
         print("loadData")
 
-    def redirectToScreen(self, screenIndex):
-        if screenIndex == 0: #Exit ~> go mainMenu
+    def redirectToScreen(self, selectedButtonIndex):
+        if selectedButtonIndex == 0: #Exit ~> go mainMenu
             self.mainManager.initMainMenu()
             return True
