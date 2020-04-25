@@ -18,9 +18,7 @@ class MainMenu(ScreenProtocol):
         # Initialize Screen
         self.screen = screen
         self.reloadViewsForSelectedButtonInIndex(self.buttonsInteractor.buttonIndex, True)
-        if mainManager == None:
-            print("Exit")
-        else:
+        if mainManager != None:
             self.mainManager = mainManager
 
     def loadView(self):
@@ -43,15 +41,11 @@ class MainMenu(ScreenProtocol):
                     self.reloadViewsForSelectedButtonInIndex(self.buttonsInteractor.buttonIndex, True)
                 elif key == K_RETURN:
                     if self.redirectToScreen(self.buttonsInteractor.buttonIndex):
-                        print("Finishing this session")
                         break
-                    else:
-                        print("Could not finish the session")
 
             pygame.display.update()
 
     def reloadViewsForSelectedButtonInIndex(self, newIndex, withSound):
-
         # Unselected Views
         self.screen.blit(self.common.bg_tit, (0, 0))
         self.screen.blit(self.common.title, ((self.cons.generalSettings.screenWidth / 2) - 216, 100))
@@ -80,15 +74,14 @@ class MainMenu(ScreenProtocol):
 
     def redirectToScreen(self,screenIndex):
         # -screenIndex: is the index that we should go to based on all the buttons indexes
-
         if screenIndex == 0: #PLAY
-            print("Play")
-            return True
+            #Need to be implemented
+            return False
         elif screenIndex == 1: #ABOUT
             self.mainManager.initAbout()
             return True
         elif  screenIndex == 2: #EXIT
-            print("Exit")
+            self.mainManager.finishGameSession()
             return True
 
         return False

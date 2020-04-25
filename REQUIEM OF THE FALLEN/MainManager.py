@@ -12,17 +12,7 @@ class MainManager:
     screenState: Enums.Screens = None
     session: bool = None
 
-    # Configuration for the singleton
-    __instance = None
-
     def __init__(self, width=0, height=0):
-        # Configuration for the singleton
-        if MainManager.__instance != None:
-            print(self.__instance)
-            # raise Exception("This class is a singleton!")
-        else:
-            MainManager.__instance = self
-
         # Initialize the screen
         pygame.init()
         pygame.mixer.init()
@@ -31,12 +21,6 @@ class MainManager:
 
         self.screen = pygame.display.set_mode((width, height))
         pygame.display.set_caption(Constants.generalSettings.screenTitle)
-
-    @staticmethod
-    def getInstance():
-        if MainManager.__instance == None:
-            MainManager()
-        return MainManager.__instance
 
     def initMainMenu(self):
         print("set .mainMenu as actual screen")
@@ -77,9 +61,9 @@ class MainManager:
                 introduction.loadView()
             elif thisState == screens.about:
                 print("About - load view")
-                about = About(thisWindow)
+                about = About(thisWindow, self)
                 about.loadView()
-                self.initMainMenu()
+                print("Session finished")
             elif thisState == screens.confirmExit:
                 print("Confirm exit - load view")
 
