@@ -26,7 +26,7 @@ class About(ScreenProtocol):
         self.common.Confirm.play()
         waitBeforeLoadingNextActions(self.mainManager.screenState)
         self.screen.blit(self.common.bg_tit, (0, 0))
-
+        pygame.display.update()
         drawText(self.screen, "ABOUT", (300, 100), self.cons.colors.lightPurple, self.cons.colors.trasparent, 60, 200, Enums.TextAnimations.typewriter)
         drawText(self.screen, "JUAN MANUEL DAVILA RIVERA", (100, 200), self.cons.colors.white, self.cons.colors.trasparent, 40, 100, Enums.TextAnimations.typewriter)
         drawText(self.screen, "GABRIELA LINARES CHAVEZ", (100, 240), self.cons.colors.white, self.cons.colors.trasparent, 40, 100, Enums.TextAnimations.typewriter)
