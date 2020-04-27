@@ -6,7 +6,7 @@ cons = Constantes.Constants()
 
 # Init all needed variables
 # ======= SPRITES =========================================================
-Virus = cons.sprites.Virus.ani_l
+Virus = cons.sprites.virusIdle.ani_l
 
 # ======= BOTONES =========================================================
 awa = cons.botones.awa
