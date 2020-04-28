@@ -24,6 +24,7 @@ class Introduction(ScreenProtocol):
 
     def loadView(self):
         # Initialize
+        music(Common.menu_theme, -1)
         self.common.Confirm.play()
         waitBeforeLoadingNextActions(self.mainManager.screenState)
         self.screen.blit(Constants.extras.bg_2, (0, 0))
@@ -92,6 +93,7 @@ class Introduction(ScreenProtocol):
                     waitBeforeLoadingNextActions(self.mainManager.screenState)
                     if self.redirectToScreen(0):
                         break
+        pygame.mixer.music.stop()
 
     def loadData(self):
         print("loadData")

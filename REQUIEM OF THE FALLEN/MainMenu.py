@@ -5,6 +5,7 @@ from ScreenProtocol import ScreenProtocol
 from Constantes import Constants
 from enums import Enums
 from pygame.locals import *
+from Utils import *
 
 class MainMenu(ScreenProtocol):
     screen: pygame.surface = None
@@ -22,6 +23,9 @@ class MainMenu(ScreenProtocol):
             self.mainManager = mainManager
 
     def loadView(self):
+
+        music(Common.main_theme, 1)
+
         while True:
             # Initialize
             event = pygame.event.wait()
@@ -42,8 +46,9 @@ class MainMenu(ScreenProtocol):
                 elif key == K_RETURN:
                     if self.redirectToScreen(self.buttonsInteractor.buttonIndex):
                         break
-
             pygame.display.update()
+        pygame.mixer.music.fadeout(900)
+
 
     def reloadViewsForSelectedButtonInIndex(self, newIndex, withSound):
         # Unselected Views
@@ -79,6 +84,7 @@ class MainMenu(ScreenProtocol):
             #Need to be implemented
             return True
         elif selectedButtonIndex == 1: #ABOUT
+            pygame.time.wait(500)
             self.mainManager.initAbout()
             return True
         elif  selectedButtonIndex == 2: #EXIT
