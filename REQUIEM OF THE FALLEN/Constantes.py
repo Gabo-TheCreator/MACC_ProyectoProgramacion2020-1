@@ -17,6 +17,7 @@ cab = "Caballero/"
 vir = "Virus/"
 inv = "Inventory/"
 slash = "Slash/"
+mag = "Magic/"
 pygame.mixer.init()
 
 
@@ -146,6 +147,20 @@ class Constants:
                      pygame.image.load(img + spr + sfx + slash + "slash6.png"),
                      pygame.image.load(img + spr + sfx + slash + "slash7.png")]
 
+        class magicEffect:
+            ani_1 =  [pygame.image.load(img + spr + sfx + mag + "magic_effect0.png"),
+                      pygame.image.load(img + spr + sfx + mag + "magic_effect1.png"),
+                      pygame.image.load(img + spr + sfx + mag + "magic_effect2.png"),
+                      pygame.image.load(img + spr + sfx + mag + "magic_effect3.png"),
+                      pygame.image.load(img + spr + sfx + mag + "magic_effect4.png"),
+                      pygame.image.load(img + spr + sfx + mag + "magic_effect5.png"),
+                      pygame.image.load(img + spr + sfx + mag + "magic_effect6.png"),
+                      pygame.image.load(img + spr + sfx + mag + "magic_effect7.png"),
+                      pygame.image.load(img + spr + sfx + mag + "magic_effect8.png"),
+                      pygame.image.load(img + spr + sfx + mag + "magic_effect9.png"),
+                      pygame.image.load(img + spr + sfx + mag + "magic_effect10.png"),
+                      pygame.image.load(img + spr + sfx + mag + "magic_effect11.png")]
+
     # ========================================================================
     # ========  SPRITES  =====================================================
     class sprites:
@@ -153,6 +168,7 @@ class Constants:
             health_potion = pygame.image.load(img + spr + inv + "Botella_health.png")
             boost_potion = pygame.image.load(img + spr + inv + "Botella_boost.png")
             empty_potion = pygame.image.load(img + spr + inv + "Botella_vacia.png")
+            mana_potion = pygame.image.load(img + spr + inv + "Botella_mana.png")
 
         class virusIdle:
             ani_l = [pygame.image.load(img + spr + idle + vir + "Virus_idle0.png"),
