@@ -32,7 +32,7 @@ keys = pygame.key.get_pressed() #Proceso donde se reciben las teclas (tal vez se
 
 # =============================================================================
 # SPRITES
-Virus = cons.sprites.Virus.ani_l
+Virus = cons.sprites.virusIdle.ani_1
 
 # =============================================================================
 common = Common
@@ -53,7 +53,11 @@ bg_tit = cons.extras.bg_tit
 bg_tit = pygame.transform.scale(bg_tit, (game_width, game_height))
 BACK_n = cons.botones.BACK_n
 BACK_s = cons.botones.BACK_s
-
+ATTACK_n = cons.botones.ATTACK_n
+ATTACK_s = cons.botones.ATTACK_s
+INVENTORY_n = cons.botones.INVENTORY_n
+INVENTORY_s = cons.botones.INVENTORY_s
+selection_border = cons.extras.selection_border
 # =============================================================================
 
 # THEMES/SOUND EFFECTS

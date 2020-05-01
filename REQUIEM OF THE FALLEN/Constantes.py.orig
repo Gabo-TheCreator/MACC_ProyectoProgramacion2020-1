@@ -1,5 +1,6 @@
 import pygame
 
+# holi
 img = "Images/"
 spr = "Sprites/"
 bg = "BackGround/"
@@ -121,7 +122,11 @@ class Constants:
 
     # ========================================================================
     # ========== SONIDOS  ====================================================
+<<<<<<< HEAD
     class musica:
+=======
+    class música:
+>>>>>>> develop
         mus = snd + mus
 
     class efectos:
@@ -134,6 +139,7 @@ class Constants:
         Dial_c = pygame.mixer.Sound(snd + sfx + "dialogo_c.wav")
         Confirm = pygame.mixer.Sound(snd + sfx + "Confirm.wav")
         Beep = pygame.mixer.Sound(snd + sfx + "beep.wav")
+<<<<<<< HEAD
 
         class slashEffect:
             ani_1 = [pygame.image.load(img + spr + sfx + slash + "slash0.png"),
@@ -145,6 +151,19 @@ class Constants:
                      pygame.image.load(img + spr + sfx + slash + "slash6.png"),
                      pygame.image.load(img + spr + sfx + slash + "slash7.png")]
 
+=======
+
+        class slashEffect:
+            ani_1 = [pygame.image.load(img + spr + sfx + slash + "slash0.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash1.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash2.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash3.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash4.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash5.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash6.png"),
+                     pygame.image.load(img + spr + sfx + slash + "slash7.png")]
+
+>>>>>>> develop
     # ========================================================================
     # ========  SPRITES  =====================================================
     class sprites:
@@ -184,6 +203,7 @@ class Constants:
                      pygame.image.load(img + spr + att + cab + "caballerito_attack6.png"),
                      pygame.image.load(img + spr + att + cab + "caballerito_attack7.png"),
                      pygame.image.load(img + spr + att + cab + "caballerito_attack8.png")]
+<<<<<<< HEAD
 
     # ========================================================================
     # ========  GENERAL SETTINGS  ============================================
@@ -204,3 +224,6 @@ class Constants:
         purple = (117,0,255)
         lightPurple = (186,127,255)
         cyan = (41,139,255)
+=======
+# ========================================================================
+>>>>>>> develop
