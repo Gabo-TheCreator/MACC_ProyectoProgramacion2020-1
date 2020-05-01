@@ -55,3 +55,6 @@ def waitBeforeLoadingNextActions(screen):
 
     elif screen == Enums.Screens.introduction:
         pygame.time.wait(2000)
+
+    elif screen == Enums.Screens.inGame:
+        pygame.time.wait(1000)

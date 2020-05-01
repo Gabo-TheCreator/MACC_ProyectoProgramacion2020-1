@@ -1,6 +1,5 @@
 import pygame
 import Common
-from pygame.locals import *
 from Utils import *
 from Constantes import Constants
 from ScreenProtocol import ScreenProtocol

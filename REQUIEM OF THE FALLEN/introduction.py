@@ -100,5 +100,5 @@ class Introduction(ScreenProtocol):
 
     def redirectToScreen(self, selectedButtonIndex):
         if selectedButtonIndex == 0: #Exit ~> go mainMenu
-            self.mainManager.initMainMenu()
+            self.mainManager.initInGame()
             return True

@@ -4,6 +4,7 @@ from Constantes import Constants
 from MainMenu import MainMenu
 from about import About
 from introduction import Introduction
+from inGame import InGame
 from Common import *
 
 
@@ -38,6 +39,10 @@ class MainManager:
         print("set .about as actual screen")
         self.screenState = Enums.Screens.introduction
 
+    def initInGame(self):
+        print("set .inGame as actual screen")
+        self.screenState = Enums.Screens.inGame
+
     def startGameSession(self):
         while self.session:
             thisState = self.screenState
@@ -62,6 +67,9 @@ class MainManager:
                 print("Session finished")
             elif thisState == screens.confirmExit:
                 print("Confirm exit - load view")
+            elif thisState == screens.inGame:
+                ingame = InGame(thisWindow, self)
+                ingame.loadView()
 
             # Update the screen each time the "While session" do a loop
             pygame.display.update()
