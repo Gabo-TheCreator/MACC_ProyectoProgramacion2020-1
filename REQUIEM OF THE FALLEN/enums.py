@@ -31,3 +31,8 @@ class Enums:
             none = -1
             right = 0
             left = 1
+
+    class Character(Enum):
+        none = -1
+        player = 0
+        enemy = 1
