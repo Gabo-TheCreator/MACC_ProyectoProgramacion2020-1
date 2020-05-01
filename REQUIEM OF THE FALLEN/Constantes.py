@@ -1,6 +1,5 @@
 import pygame
 
-# holi
 img = "Images/"
 spr = "Sprites/"
 bg = "BackGround/"
@@ -122,7 +121,7 @@ class Constants:
 
     # ========================================================================
     # ========== SONIDOS  ====================================================
-    class música:
+    class musica:
         mus = snd + mus
 
     class efectos:
@@ -185,4 +184,23 @@ class Constants:
                      pygame.image.load(img + spr + att + cab + "caballerito_attack6.png"),
                      pygame.image.load(img + spr + att + cab + "caballerito_attack7.png"),
                      pygame.image.load(img + spr + att + cab + "caballerito_attack8.png")]
-# ========================================================================
+
+    # ========================================================================
+    # ========  GENERAL SETTINGS  ============================================
+    class generalSettings:
+        screenWidth = 800
+        screenHeight = 600
+        screenTitle = "Requiem of the Fallen"
+        generalFont = "Fonts/8bit.ttf"
+    # ========================================================================
+    # ========  COLORES  =====================================================
+    class colors:
+        trasparent = (0)
+        white = (255,255,255)
+        black = (0,0,0)
+        red = (255,0,0)
+        green = (0,255,0)
+        blue = (0,0,255)
+        purple = (117,0,255)
+        lightPurple = (186,127,255)
+        cyan = (41,139,255)

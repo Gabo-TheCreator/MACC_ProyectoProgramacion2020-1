@@ -1,6 +1,7 @@
 import pygame
 import Letra_one_by_one as one
 import Constantes
+import Common
 # =============================================================================
 # DEFINICIÓN DE VARIABLES
 index_about = 0  #Valor único para la selección del botón en la pantalla de créditos
@@ -14,7 +15,7 @@ letters = {1: "A", 2: "B", 3: "C", 4: "D", 5: "E", 6: "F", 7: "G", 8: "H", 9: "I
            12: "L", 13: "M", 14: "N", 15: "O", 16: "P", 17: "Q", 18: "R", 19: "S", 20: "T", 21: "U",
            22: "V", 23: "W", 24: "X", 25: "Y", 26: "Z"}
 menu = True  #Proceso del menú principal
-game = True  #Proceso del juego en sí
+game_session = True  #Proceso del juego en sí
 game_width = 800
 game_height = 600
 count = 0  #Conteo para la selección de fotograma
@@ -25,10 +26,7 @@ x = 100  #Valor en x cuyo uso cambia dependiendo de donde se invoque
 # =============================================================================
 
 pygame.init()
-
 pygame.display.set_caption("Requiem of the Fallen")
-clock = pygame.time.Clock()
-clock.tick(25)  #El juego anda a 25 FPS, creo
 win = pygame.display.set_mode((game_width, game_height)) #Se invoca la pantalla
 keys = pygame.key.get_pressed() #Proceso donde se reciben las teclas (tal vez se puedan omitir las que vienen después)
 
@@ -37,7 +35,7 @@ keys = pygame.key.get_pressed() #Proceso donde se reciben las teclas (tal vez se
 Virus = cons.sprites.virusIdle.ani_1
 
 # =============================================================================
-
+common = Common
 #BOTONES
 awa = cons.botones.awa
 title = cons.extras.title
@@ -63,7 +61,7 @@ selection_border = cons.extras.selection_border
 # =============================================================================
 
 # THEMES/SOUND EFFECTS
-mus = cons.música.mus
+mus = cons.musica.mus
 main_theme = "theme.mp3"
 menu_theme = "name.mp3"
 low_mana = cons.efectos.low_mana
@@ -79,7 +77,7 @@ Confirm = cons.efectos.Confirm
 # =============================================================================
 #LETRAS
 
-a_n = cons.letras.a_n 
+a_n = cons.letras.a_n
 a_s = cons.letras.a_s
 b_n = cons.letras.b_n 
 b_s = cons.letras.b_s
@@ -294,7 +292,7 @@ def idle_menu(pj, x, y): #Aquí va el proceso de animación en la pantalla antes
 
 # =============================================================================
 music(main_theme, -1)
-while game: #Procesos del juego
+while game_session: #Procesos del juego
     while menu:
         win.blit(bg_tit, (0, 0))
         win.blit(title, ((game_width / 2) - 216, 100))
@@ -435,7 +433,7 @@ while game: #Procesos del juego
         one.text("TURNING OFF...", (300, 300), (255, 255, 255), (110, 1100), 40, 0.1)
         win.blit(bg_tit, (0, 0))
         pygame.time.wait(2000)
-        game = False
+        game_session = False
     if index == -1:
         win.blit(bg_tit, (0, 0))
         pygame.display.update()
