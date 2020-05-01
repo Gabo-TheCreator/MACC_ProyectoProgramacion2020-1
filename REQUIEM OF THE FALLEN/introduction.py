@@ -52,8 +52,7 @@ class Introduction(ScreenProtocol):
                     self.screen.blit(Common.PLAY_n, (300, 500))
                     Common.Confirm.play()
                     waitBeforeLoadingNextActions(self.mainManager.screenState)
-                    if self.redirectToScreen(0):
-                        break
+                    break
         
         self.screen.blit(Constants.extras.bg_2, (0, 0))
         pygame.display.update()
@@ -85,7 +84,16 @@ class Introduction(ScreenProtocol):
         pygame.display.update()
         self.screen.blit(Common.PLAY_s, (312.5, 500))
         pygame.display.update()
-        pygame.time.wait(20000)
+        while True:
+            event = pygame.event.wait()
+            if event.type == KEYDOWN:
+                key = event.key
+                if key == K_RETURN:
+                    self.screen.blit(Common.PLAY_n, (312.5, 500))
+                    Common.Confirm.play()
+                    waitBeforeLoadingNextActions(self.mainManager.screenState)
+                    if self.redirectToScreen(0):
+                        break
 
     def loadData(self):
         print("loadData")
