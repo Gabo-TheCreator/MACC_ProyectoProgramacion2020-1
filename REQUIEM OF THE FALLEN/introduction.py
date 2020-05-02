@@ -5,6 +5,7 @@ from Utils import *
 from Constantes import Constants
 from ScreenProtocol import ScreenProtocol
 from enums import Enums
+from pygame_functions import *
 
 
 class Introduction(ScreenProtocol):
@@ -34,7 +35,7 @@ class Introduction(ScreenProtocol):
                    Enums.TextAnimations.typewriter)
         drawText(self.screen, "ashes of those who died full of remorse.", (90, 220),self.cons.colors.white, self.cons.colors.trasparent, 30, 100,
                  Enums.TextAnimations.typewriter)
-        drawText(self.screen, "That new lifeform, leaded by the evil Kho'wid, has", (90, 240), self.cons.colors.white, self.cons.colors.trasparent, 30, 100,
+        drawText(self.screen, "That new lifeform, led by the evil Kho'wid, has", (90, 240), self.cons.colors.white, self.cons.colors.trasparent, 30, 100,
                  Enums.TextAnimations.typewriter)
         drawText(self.screen, "the evil purpose of deleting humans from earth.", (90, 260), self.cons.colors.white, self.cons.colors.trasparent, 30, 100,
                  Enums.TextAnimations.typewriter)
@@ -65,7 +66,7 @@ class Introduction(ScreenProtocol):
         drawText(self.screen, "you'll control this little knight.", (90, 220), self.cons.colors.white,
                  self.cons.colors.trasparent, 30, 100,
                  Enums.TextAnimations.typewriter)
-        self.screen.blit(Constants.sprites.caballeroIdle.ani_l[0], (376, 240))
+        self.screen.blit(Constants.caballero_1, (376, 240))
         pygame.display.update()
         drawText(self.screen, "All you have to do is take your pick on your turn:", (90, 350), self.cons.colors.white,
                  self.cons.colors.trasparent, 30, 100,

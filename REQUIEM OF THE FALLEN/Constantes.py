@@ -1,4 +1,5 @@
 import pygame
+from pygame_functions import *
 
 img = "Images/"
 spr = "Sprites/"
@@ -115,8 +116,8 @@ class Constants:
     # ========================================================================
     # ========  IMÁGENES  ====================================================
     class extras:
-        bg_tit = pygame.image.load(img + bg + "stone2.jpg")
-        bg_2 = pygame.image.load(img + bg + "stone.jpg")
+        bg_tit = pygame.image.load(img + bg + "stone2.png")
+        bg_2 = pygame.image.load(img + bg + "stone.png")
         title = pygame.image.load(img + txt + "REQUIEM.png")
         selection_border = pygame.image.load(img + bg + "selection_border.png")
 
@@ -162,43 +163,21 @@ class Constants:
 
     # ========================================================================
     # ========  SPRITES  =====================================================
-    class sprites:
-        class Inventory:
-            health_potion = pygame.image.load(img + spr + inv + "Botella_health.png")
-            boost_potion = pygame.image.load(img + spr + inv + "Botella_boost.png")
-            empty_potion = pygame.image.load(img + spr + inv + "Botella_vacia.png")
 
-        class virusIdle:
-            ani_l = [pygame.image.load(img + spr + idle + vir + "Virus_idle0.png"),
-                     pygame.image.load(img + spr + idle + vir + "Virus_idle1.png"),
-                     pygame.image.load(img + spr + idle + vir + "Virus_idle2.png"),
-                     pygame.image.load(img + spr + idle + vir + "Virus_idle3.png"),
-                     pygame.image.load(img + spr + idle + vir + "Virus_idle4.png")]
+    class Inventory:
+        health_potion = pygame.image.load(img + spr + inv + "Botella_health.png")
+        boost_potion = pygame.image.load(img + spr + inv + "Botella_boost.png")
+        empty_potion = pygame.image.load(img + spr + inv + "Botella_vacia.png")
 
-        class virusAttack:
-            ani_2 = [pygame.image.load(img + spr + att + vir + "Virus_attack0.png"),
-                     pygame.image.load(img + spr + att + vir + "Virus_attack1.png"),
-                     pygame.image.load(img + spr + att + vir + "Virus_attack2.png"),
-                     pygame.image.load(img + spr + att + vir + "Virus_attack3.png"),
-                     pygame.image.load(img + spr + att + vir + "Virus_attack4.png")]
+    class virusAttack:
+        ani_2 = [pygame.image.load(img + spr + att + vir + "Virus_attack0.png"),
+                pygame.image.load(img + spr + att + vir + "Virus_attack1.png"),
+                pygame.image.load(img + spr + att + vir + "Virus_attack2.png"),
+                pygame.image.load(img + spr + att + vir + "Virus_attack3.png"),
+                pygame.image.load(img + spr + att + vir + "Virus_attack4.png")]
 
-        class caballeroIdle:
-            ani_l = [pygame.image.load(img + spr + idle + cab + "caballerito_idle0.png"),
-                     pygame.image.load(img + spr + idle + cab + "caballerito_idle1.png"),
-                     pygame.image.load(img + spr + idle + cab + "caballerito_idle2.png"),
-                     pygame.image.load(img + spr + idle + cab + "caballerito_idle3.png"),
-                     pygame.image.load(img + spr + idle + cab + "caballerito_idle4.png")]
+    caballero_1 = pygame.image.load(img + spr + idle + cab + "caballerito_idle0.png")
 
-        class caballeroAttack:
-            ani_1 = [pygame.image.load(img + spr + att + cab + "caballerito_attack0.png"),
-                     pygame.image.load(img + spr + att + cab + "caballerito_attack1.png"),
-                     pygame.image.load(img + spr + att + cab + "caballerito_attack2.png"),
-                     pygame.image.load(img + spr + att + cab + "caballerito_attack3.png"),
-                     pygame.image.load(img + spr + att + cab + "caballerito_attack4.png"),
-                     pygame.image.load(img + spr + att + cab + "caballerito_attack5.png"),
-                     pygame.image.load(img + spr + att + cab + "caballerito_attack6.png"),
-                     pygame.image.load(img + spr + att + cab + "caballerito_attack7.png"),
-                     pygame.image.load(img + spr + att + cab + "caballerito_attack8.png")]
 
     # ========================================================================
     # ========  GENERAL SETTINGS  ============================================
