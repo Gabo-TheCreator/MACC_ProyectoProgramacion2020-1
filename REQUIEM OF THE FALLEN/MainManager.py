@@ -6,7 +6,8 @@ from about import About
 from introduction import Introduction
 from inGame import InGame
 from Common import *
-
+from pygame_functions import *
+from IngameConstantes import *
 
 class MainManager:
     screen: pygame.surface = None
@@ -20,7 +21,8 @@ class MainManager:
 
         self.session = True
 
-        self.screen = pygame.display.set_mode((width, height))
+        self.screen = screenSize(width, height)
+        #self.screen = pygame.display.set_mode((width, height))
         pygame.display.set_caption(Constants.generalSettings.screenTitle)
 
     def initMainMenu(self):
@@ -68,7 +70,7 @@ class MainManager:
             elif thisState == screens.confirmExit:
                 print("Confirm exit - load view")
             elif thisState == screens.inGame:
-                ingame = InGame(thisWindow, self)
+                ingame = InGame(wn, self)
                 ingame.loadView()
 
             # Update the screen each time the "While session" do a loop

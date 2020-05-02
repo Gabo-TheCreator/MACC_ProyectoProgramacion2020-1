@@ -6,7 +6,7 @@ cons = Constantes.Constants()
 
 # Init all needed variables
 # ======= SPRITES =========================================================
-Virus = cons.sprites.virusIdle.ani_l
+
 
 # ======= BOTONES =========================================================
 awa = cons.botones.awa
@@ -22,8 +22,7 @@ OK_s = cons.botones.OK_s
 DEL_n = cons.botones.DEL_n
 DEL_s = cons.botones.DEL_s
 bg_tit = cons.extras.bg_tit
-bg_tit = pygame.transform.scale(bg_tit, (cons.generalSettings.screenWidth,
-                                         cons.generalSettings.screenHeight))
+
 BACK_n = cons.botones.BACK_n
 BACK_s = cons.botones.BACK_s
 
