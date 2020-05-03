@@ -5,6 +5,7 @@ from Utils import *
 from Constantes import Constants
 from ScreenProtocol import ScreenProtocol
 from IngameConstantes import *
+from pygame_functions import *
 from enums import Enums
 
 class InGame(ScreenProtocol):
@@ -63,7 +64,7 @@ class InGame(ScreenProtocol):
                         moveSprite(Slash, 600, 158, True)
                         showSprite(Slash)
                         frame = (frame + 1) % 8
-                        nextFrame += 100
+                        nextFrame += 5
                         changeSpriteImage(Slash, 0 * 8 + frame)
                         index = 0
         #AQUÍ HERMOSURAS, AQUÍ!!!
