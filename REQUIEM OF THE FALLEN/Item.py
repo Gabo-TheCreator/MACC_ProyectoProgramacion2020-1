@@ -1,7 +1,7 @@
 class Item:
     vida: int = None
     mana: int = None
-    boost: int = None
+    boost: float = None
     nombre: str = None
     imagen: str = None
 

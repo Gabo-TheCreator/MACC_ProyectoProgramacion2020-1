@@ -5,7 +5,7 @@ from enum import Enum
 class Character:
     vida: int = None
     mana: int = None
-    boost: int = None
+    boost: float = None
     nombre: str = None
     items = None  # [Item]
     ataques = None  # [Ataque]
