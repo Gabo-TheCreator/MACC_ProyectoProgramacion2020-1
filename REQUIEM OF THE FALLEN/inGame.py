@@ -53,9 +53,14 @@ class InGame(ScreenProtocol):
                 pygame.draw.rect(self.screen, Constants.colors.lightGreen, (200, 0, 100, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightBlue, (200, 20, 100, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightRed, (530, 0, 70, 20))
-                drawLabel(self.screen, "HP: "+str(self.player.vida), constants.colors.black, constants.colors.trasparent, 20, (202,0))
-                drawLabel(self.screen, "Mana: " + str(self.player.mana), constants.colors.black, constants.colors.trasparent, 20, (202, 20))
-                drawLabel(self.screen, "HP: " + str(self.enemy.vida), constants.colors.black, constants.colors.trasparent, 20, (532, 0))
+                drawLabel(self.screen, "HP: "+str(self.player.vida), constants.colors.black, constants.colors.trasparent, 20, (202,3))
+                drawLabel(self.screen, "Mana: " + str(self.player.mana), constants.colors.black, constants.colors.trasparent, 20, (202, 23))
+                drawLabel(self.screen, "HP: " + str(self.enemy.vida), constants.colors.black, constants.colors.trasparent, 20, (532, 3))
+
+                if self.player.mana <= 50:
+                    drawLabel(self.screen, "LOW!", constants.colors.cyan, constants.colors.trasparent, 20, (150, 23))
+                if self.player.vida <= 50:
+                    drawLabel(self.screen, "LOW!", constants.colors.green, constants.colors.trasparent, 20, (150, 3))
 
                 if index == 0:
                     idleAnimations()
@@ -74,7 +79,7 @@ class InGame(ScreenProtocol):
                         effectAnimations(Slash, 600, 158, 8, 100, 100)
                         index = 0
                         self.player.mana -=20
-                        self.enemy.vida -=15
+                        self.player.vida -=15
             #AQUÍ HERMOSURAS, AQUÍ!!!
             self.loadData()
 

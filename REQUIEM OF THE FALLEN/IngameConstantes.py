@@ -110,7 +110,7 @@ def idleAnimations():
     nextFrame += 0
     changeSpriteImage(caballero, 0 * 5 + frame)
     changeSpriteImage(virus, 0 * 5 + frame)
-    #pygame.time.wait(100)
+    pygame.time.wait(100)
 
 
 def attackAnimations(SpriteName, xcor, ycor, pngnum, frameaddition, waitTime):
