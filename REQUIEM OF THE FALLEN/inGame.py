@@ -42,16 +42,7 @@ class InGame(ScreenProtocol):
         while True:
             if clock() > nextFrame:
                 if index == 0:
-                    hideSprite(caballeroA)
-                    hideSprite(Slash)
-                    moveSprite(caballero, 200, 168, True)
-                    showSprite(caballero)
-                    moveSprite(virus, 600, 168, True)
-                    showSprite(virus)
-                    frame = (frame + 1) % 5  # Son 5 sprites los que tiene el caballerito idle
-                    nextFrame += 100
-                    changeSpriteImage(caballero, 0 * 5 + frame)
-                    changeSpriteImage(virus, 0 * 5 + frame)
+                    idleAnimations()
 
                     if keyPressed("a"):
                         hideSprite(caballero)
@@ -62,18 +53,9 @@ class InGame(ScreenProtocol):
                         index = 2
 
                 if index == 1:
-                    moveSprite(caballeroA, 208, 168, True)
-                    showSprite(caballeroA)
-                    frame = (frame + 1) % 9  # Son 9 sprites los que tiene el caballerito attack
-                    nextFrame += 100
-                    changeSpriteImage(caballeroA, 0 * 9 + frame)
+                    attackAnimations(caballeroA, 208, 168, 9, 100)
                     if index_a == 1:
-                        moveSprite(Slash, 600, 158, True)
-                        showSprite(Slash)
-                        frame = (frame + 1) % 8
-                        nextFrame += 5
-                        changeSpriteImage(Slash, 0 * 8 + frame)
-                        index = 0
+                        effectAnimations(Slash, 600, 158, 8, 5, 0)
             #AQUÍ HERMOSURAS, AQUÍ!!!
             self.loadData()
 
