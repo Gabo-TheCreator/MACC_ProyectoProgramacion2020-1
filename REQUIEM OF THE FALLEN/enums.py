@@ -44,7 +44,10 @@ class Enums:
                     left = 1
             class inventory:
                 class Button(Enum):
-
+                    health = 0
+                    mana = 1
+                    boost = 2
+                    empty = 3
                 class directions(Enum):
                     none = -1
                     right = 0
@@ -52,6 +55,9 @@ class Enums:
                     up = 2
                     down = 3
             class attack:
+                class Button(Enum):
+                    slash = 0
+                    magic = 1
                 class directions(Enum):
                     none = -1
                     right = 0

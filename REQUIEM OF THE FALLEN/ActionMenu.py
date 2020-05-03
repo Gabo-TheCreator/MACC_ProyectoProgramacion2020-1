@@ -18,7 +18,7 @@ class ActionMenu:
             self.thisScreen = screen
 
     def displayMenu(self):
-
+        print("displayMenu")
 
     def actionMenuScreenCorrectPosition(self, xpos, ypos):
 
