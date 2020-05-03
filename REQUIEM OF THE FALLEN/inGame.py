@@ -12,6 +12,10 @@ from Item import Item
 from Ataque import Ataque
 from ActionMenu import ActionMenu
 
+
+
+
+
 class InGame(ScreenProtocol):
     screen: pygame.surface = None
     common = Common
@@ -30,8 +34,6 @@ class InGame(ScreenProtocol):
             self.mainManager = mainManager
 
     def loadView(self):
-        nextFrame = clock()
-        frame = 1
         index = 0
         index_a = 0
         print("loadView")
@@ -39,8 +41,10 @@ class InGame(ScreenProtocol):
         self.screen.blit(border, (0, 0))
         pygame.display.update()
 
+
         while True:
             if clock() > nextFrame:
+
                 if index == 0:
                     idleAnimations()
 
@@ -53,9 +57,10 @@ class InGame(ScreenProtocol):
                         index = 2
 
                 if index == 1:
-                    attackAnimations(caballeroA, 208, 168, 9, 100)
+                    attackAnimations(caballeroA, 208, 168, 9, 100, 50)
                     if index_a == 1:
-                        effectAnimations(Slash, 600, 158, 8, 5, 0)
+                        effectAnimations(Slash, 600, 158, 8, 100, 100)
+                        index = 0
             #AQUÍ HERMOSURAS, AQUÍ!!!
             self.loadData()
 

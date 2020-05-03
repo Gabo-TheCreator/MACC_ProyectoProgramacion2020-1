@@ -1,6 +1,7 @@
 from pygame_functions import *
 from Item import Item
 from Ataque import Ataque
+from inGame import *
 
 # =============== SHORTCUTS =================== #
 
@@ -94,8 +95,11 @@ mana_potion = Item(0, 50, 0, "Mana Potion", mana_bottle)
 
 
 # =============== ANIMATION FUNCTIONS =================== #
+nextFrame = clock()
+frame = 1
 
 def idleAnimations():
+    global frame, nextFrame
     hideSprite(caballeroA)
     hideSprite(Slash)
     moveSprite(caballero, 200, 168, True)
@@ -103,23 +107,27 @@ def idleAnimations():
     moveSprite(virus, 600, 168, True)
     showSprite(virus)
     frame = (frame + 1) % 5  # Son 5 sprites los que tiene el caballerito idle
-    nextFrame += 100
+    nextFrame += 0
     changeSpriteImage(caballero, 0 * 5 + frame)
     changeSpriteImage(virus, 0 * 5 + frame)
+    pygame.time.wait(100)
 
 
-def attackAnimations(SpriteName, xcor, ycor, pngnum, frameaddition):
+def attackAnimations(SpriteName, xcor, ycor, pngnum, frameaddition, waitTime):
+    global frame, nextFrame
     moveSprite(SpriteName, xcor, ycor, True)
     showSprite(SpriteName)
     frame = (frame + 1) % pngnum  # El número de imágenes o frames por cada animación
     nextFrame += frameaddition
     changeSpriteImage(SpriteName, 0 * pngnum + frame)
+    pygame.time.wait(waitTime)
 
 
-def effectAnimations(EffectName, xcor, ycor, pngnum, frameaddition, indexnum):
+def effectAnimations(EffectName, xcor, ycor, pngnum, frameaddition, waitTime):
+    global frame, nextFrame
     moveSprite(EffectName, xcor, ycor, True)
     showSprite(EffectName)
     frame = (frame + 1) % pngnum
     nextFrame += frameaddition
     changeSpriteImage(EffectName, 0 * pngnum + frame)
-    index = indexnum
+    pygame.time.wait(waitTime)
