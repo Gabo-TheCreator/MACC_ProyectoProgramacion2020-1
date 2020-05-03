@@ -111,8 +111,8 @@ class Constants:
         ATTACK_s = pygame.transform.scale(ATTACK_s, (150, 75))
         INVENTORY_n = pygame.image.load(img + txt + but + "INVENTORYnorm.png")
         INVENTORY_s = pygame.image.load(img + txt + but + "INVENTORYselect.png")
-        INVENTORY_n = pygame.transform.scale(INVENTORY_n, (150, 75))
-        INVENTORY_s = pygame.transform.scale(INVENTORY_s, (150, 75))
+        INVENTORY_n = pygame.transform.scale(INVENTORY_n, (200, 75))
+        INVENTORY_s = pygame.transform.scale(INVENTORY_s, (200, 75))
     # ========================================================================
     # ========  IMÁGENES  ====================================================
     class extras:

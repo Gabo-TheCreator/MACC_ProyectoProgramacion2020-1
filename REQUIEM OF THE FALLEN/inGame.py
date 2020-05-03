@@ -10,13 +10,13 @@ from enums import Enums
 from Character import Character
 from Item import Item
 from Ataque import Ataque
+from ActionMenu import ActionMenu
 
 class InGame(ScreenProtocol):
     screen: pygame.surface = None
     common = Common
     cons = Constants
     mainManager = None
-    player = Character(100,100,1.0,"Caballerito",[Item(), Item()], [Ataque()], Enums.Character.player)
 
     def __init__(self, screen, mainManager=None):
         self.screen = screen
@@ -37,7 +37,6 @@ class InGame(ScreenProtocol):
 
         while True:
             if clock() > nextFrame:
-
                 if index == 0:
                     hideSprite(caballeroA)
                     hideSprite(Slash)
@@ -71,20 +70,12 @@ class InGame(ScreenProtocol):
                         nextFrame += 5
                         changeSpriteImage(Slash, 0 * 8 + frame)
                         index = 0
-        #AQUÍ HERMOSURAS, AQUÍ!!!
-        self.loadData()
+            #AQUÍ HERMOSURAS, AQUÍ!!!
+            self.loadData()
 
     def loadData(self):
-        print("loadData")
-        while True:
-            event = pygame.event.wait()
-            if event.type == KEYDOWN:
-                key = event.key
-                if key == K_RETURN:
-                    Common.Confirm.play()
-                    waitBeforeLoadingNextActions(self.mainManager.screenState)
-                    if self.redirectToScreen(0):
-                        break
+        actionMenu = ActionMenu("player", "enemy", self.screen)
+        actionMenu.displayMenu()
 
 
     def redirectToScreen(self, selectedButtonIndex):

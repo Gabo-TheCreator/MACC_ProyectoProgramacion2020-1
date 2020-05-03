@@ -36,3 +36,28 @@ class Enums:
         none = -1
         player = 0
         enemy = 1
+
+    class inGame:
+        class Menu:
+            class baseState:
+                class Button(Enum):
+                    inventory = 0
+                    attack = 1
+                class directions(Enum):
+                    none = -1
+                    right = 0
+                    left = 1
+            class inventory:
+                class Button(Enum):
+
+                class directions(Enum):
+                    none = -1
+                    right = 0
+                    left = 1
+                    up = 2
+                    down = 3
+            class attack:
+                class directions(Enum):
+                    none = -1
+                    right = 0
+                    left = 1
