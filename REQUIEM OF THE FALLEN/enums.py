@@ -12,7 +12,7 @@ class Enums:
         introduction = 4
         confirmExit = 5
 
-    class CharaterType(Enum):
+    class CharacterType(Enum):
         none = -1
         player = 0
         enemy = 1
@@ -31,11 +31,6 @@ class Enums:
             none = -1
             right = 0
             left = 1
-
-    class Character(Enum):
-        none = -1
-        player = 0
-        enemy = 1
 
     class inGame:
         class Menu:

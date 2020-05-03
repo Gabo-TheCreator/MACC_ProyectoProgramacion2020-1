@@ -18,6 +18,10 @@ class InGame(ScreenProtocol):
     cons = Constants
     mainManager = None
 
+    player = Character(100, 100, 1.0, "Caballerito", [health_potion, mana_potion, boost_potion, empty_potion], [slash_attack, magic_player], Enums.CharacterType.player)
+    enemy = Character(500, 500, 1.0, "Kho'wid", [], [slash_attack, magic_enemy, miss], Enums.CharacterType.enemy)
+
+
     def __init__(self, screen, mainManager=None):
         self.screen = screen
 
