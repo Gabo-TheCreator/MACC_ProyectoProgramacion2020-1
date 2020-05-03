@@ -48,7 +48,7 @@ class InGame(ScreenProtocol):
                 pygame.draw.rect(self.screen, Constants.colors.black, (0, 20, 200, 20))
                 pygame.draw.rect(self.screen, Constants.colors.green, (0,0, 2*(self.player.vida),20))
                 pygame.draw.rect(self.screen, Constants.colors.cyan, (0,20, 2*(self.player.mana),20))
-                pygame.draw.rect(self.screen, Constants.colors.black, (600, 0, 100, 20))
+                pygame.draw.rect(self.screen, Constants.colors.black, (600, 0, 200, 20))
                 pygame.draw.rect(self.screen, Constants.colors.red, (600+(200-self.enemy.vida/2.5),0, self.enemy.vida/2.5, 20))
                 if index == 0:
                     idleAnimations()
