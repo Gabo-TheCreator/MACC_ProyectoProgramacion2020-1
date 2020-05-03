@@ -7,12 +7,16 @@ from ScreenProtocol import ScreenProtocol
 from IngameConstantes import *
 from pygame_functions import *
 from enums import Enums
+from Character import Character
+from Item import Item
+from Ataque import Ataque
 
 class InGame(ScreenProtocol):
     screen: pygame.surface = None
     common = Common
     cons = Constants
     mainManager = None
+    player = Character(100,100,1.0,"Caballerito",[Item(), Item()], [Ataque()], Enums.Character.player)
 
     def __init__(self, screen, mainManager=None):
         self.screen = screen
