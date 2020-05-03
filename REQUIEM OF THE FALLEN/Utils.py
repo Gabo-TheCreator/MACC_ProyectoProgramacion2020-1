@@ -58,3 +58,8 @@ def waitBeforeLoadingNextActions(screen):
 
     elif screen == Enums.Screens.inGame:
         pygame.time.wait(1000)
+
+def drawLabel(screen, text, color, background, size, coord):
+    font = pygame.font.Font(constants.generalSettings.generalFont, size)
+    showText = font.render(text, True, color, background)
+    screen.blit(showText, coord)

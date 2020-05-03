@@ -198,3 +198,6 @@ class Constants:
         purple = (117,0,255)
         lightPurple = (186,127,255)
         cyan = (41,139,255)
+        lightGreen = (193, 255, 215)
+        lightBlue = (163, 231, 255)
+        lightRed = (254, 186, 186)
