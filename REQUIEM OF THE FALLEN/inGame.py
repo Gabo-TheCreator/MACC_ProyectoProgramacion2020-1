@@ -121,6 +121,9 @@ class InGame(ScreenProtocol):
         randomAttack = int(random.uniform(0, totalAttacks))
 
         self.actionMenu.attackAsEnemy(self.getAttackFromName(enemyAttacks[randomAttack].getName()))
+        player, enemy = self.actionMenu.retriveUpdatedCharecters()
+        self.player = player
+        self.enemy = enemy
 
     def getAttackFromName(self, name):
         if name == "Slash":
