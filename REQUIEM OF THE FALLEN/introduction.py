@@ -44,6 +44,7 @@ class Introduction(ScreenProtocol):
                  Enums.TextAnimations.typewriter)
         drawText(self.screen, "relies on you.", (90, 340), self.cons.colors.cyan, self.cons.colors.trasparent, 50, 100,
                  Enums.TextAnimations.typewriter)
+        #Se dibujan las líneas del texto de introducción
         self.screen.blit(Common.PLAY_s, (300, 500))
         pygame.display.update()
         while True:
@@ -55,6 +56,7 @@ class Introduction(ScreenProtocol):
                     Common.Confirm.play()
                     waitBeforeLoadingNextActions(self.mainManager.screenState)
                     break
+        #Se muestra el botón para continuar y se espera a que el jugador lo seleccione
         
         self.screen.blit(Constants.extras.bg_2, (0, 0))
         pygame.display.update()
@@ -97,6 +99,9 @@ class Introduction(ScreenProtocol):
                     waitBeforeLoadingNextActions(self.mainManager.screenState)
                     if self.redirectToScreen(0):
                         break
+                    #Al seleccionar, se define que al salir del ciclo, se redirige a la pantalla seleccionada
+        #Se da un pequeño tutorial al jugador para decirle cuál es su rol en el juego,
+        #para nuevamente, mostrar el botón para continuar y esperar a que el jugador lo presione
 
     def loadData(self):
         print("loadData")
@@ -105,3 +110,4 @@ class Introduction(ScreenProtocol):
         if selectedButtonIndex == 0: #Exit ~> go mainMenu
             self.mainManager.initInGame()
             return True
+    #Redirección a la pantalla de juego

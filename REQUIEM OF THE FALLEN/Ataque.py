@@ -22,3 +22,5 @@ class Ataque:
 
     def getBoost(self):
         return self.boost
+
+#Definición de los argumentos que toman los ataques

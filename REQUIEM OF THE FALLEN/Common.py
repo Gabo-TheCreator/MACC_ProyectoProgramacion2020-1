@@ -7,7 +7,8 @@ cons = Constantes.Constants()
 # Init all needed variables
 # ======= SPRITES =========================================================
 
-
+#A lo largo de toda esta página, se recogen los archivos más utilizados desde el módulo
+#Constantes.py para utilizarse más eficientemente
 # ======= BOTONES =========================================================
 awa = cons.botones.awa
 title = cons.extras.title

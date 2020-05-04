@@ -1,7 +1,8 @@
 from enum import Enum
 
 
-# Para todas las enumeraciones necesitamos darles un valor inicial, de lo contrario al momento de saber cual es su valor nos va a retornar None
+# Para todas las enumeraciones necesitamos darles un valor inicial,
+# de lo contrario al momento de saber cual es su valor nos va a retornar None
 class Enums:
     class Screens(Enum):
         none = -1

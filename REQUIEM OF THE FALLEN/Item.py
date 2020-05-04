@@ -12,3 +12,4 @@ class Item:
         self.boost = boost
         self.nombre = nombre
         self.imagen = imagen
+#Definición de los atributos de los items (no implementada)

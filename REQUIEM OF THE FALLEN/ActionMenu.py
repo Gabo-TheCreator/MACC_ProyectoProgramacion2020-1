@@ -12,7 +12,7 @@ class ActionMenu:
 
     cons = Constants
     common = Common
-
+    #Se renombran los módulos para hacerlos más sencillos
     thisPlayer: Character = None
     updatedPlayer: Character = None
     thisEnemy: Character = None
@@ -23,7 +23,7 @@ class ActionMenu:
     lastAttack = None
 
     buttonsInteractor = inGameButtonsInteractor()
-
+    #Se definen los argumentos sin valor alguno, para ser cambiados en el código
     def __init__(self):
         self.initBaseMenu()
 
@@ -35,6 +35,7 @@ class ActionMenu:
 
     def initAttack(self):
         self.menuState = Enums.inGame.Menu.States.attack
+    #Se inicializan dichos argumentos
 
     def updateMenuData(self, player, enemy, screen):
         if player != None and enemy != None and screen != None:
@@ -64,7 +65,6 @@ class ActionMenu:
                 print("Inventory")
                 self.initBaseMenu()
                 completionForItem()
-
         elif self.menuState == Enums.inGame.Menu.States.attack:
             self.reloadAttackMenu(self.buttonsInteractor.attackButtonsIndex, False)
             if keyPressed("right"):
@@ -80,6 +80,7 @@ class ActionMenu:
                         pygame.time.wait(100)
                         self.initBaseMenu()
                         completionForAttack()
+#Líneas 46-83 #Se dan las acciones posibles en el menú dentro del juego (arriba, abajo y ENTER)
 
     def actionMenuScreenCorrectPosition(self, xpos, ypos):
 
@@ -90,6 +91,7 @@ class ActionMenu:
         newy = ypos + baseY
 
         return newx, newy
+    #Define coordenadas base de 'x' y 'y'
 
     def reloadBaseMenu(self, newIndex, withSound):
 
@@ -108,6 +110,7 @@ class ActionMenu:
             self.thisScreen.blit(self.cons.botones.INVENTORY_s, (self.actionMenuScreenCorrectPosition(80, 90)))
         elif selectedButton == self.buttonsInteractor.baseButtons[1]:
             self.thisScreen.blit(self.cons.botones.ATTACK_s, ((self.actionMenuScreenCorrectPosition(360, 90))))
+    #Genera un estado base en el menú de juego, para que cambie respecto a cual está señalado, menú inicial de juego
 
     def reloadAttackMenu(self, newIndex, withSound):
 
@@ -124,6 +127,7 @@ class ActionMenu:
             self.thisScreen.blit(self.cons.botones.SLASH_s, (self.actionMenuScreenCorrectPosition(80, 90)))
         elif selectedButton == self.buttonsInteractor.attackButtons[1]:
             self.thisScreen.blit(self.cons.botones.SPELL_s, (self.actionMenuScreenCorrectPosition(360, 90)))
+    #Genera un estado base en el menú de juego, para que cambie respecto a cual está señalado, menú de ataque del juego
 
 
     def reloadInventoryMenu(self, newIndex, withSound):
@@ -133,6 +137,8 @@ class ActionMenu:
         if withSound:
             self.common.EndLine.play()
 
+    #Espacio para implementar inventario
+
     def redirectToMenu(self, selectedButtonIndex):
         if selectedButtonIndex == 0:
             print("Inventory")
@@ -141,6 +147,7 @@ class ActionMenu:
         elif selectedButtonIndex == 1:
             print("Attack")
             self.initAttack()
+    #Redirección al submenú dependiendo del índice dentro del menú anterior
 
     def selectAttack(self, indexPos):
         if indexPos == Enums.inGame.Menu.attack.Button.slash.value:
@@ -150,12 +157,14 @@ class ActionMenu:
             self.lastAttack = Enums.inGame.Menu.Attacks.magicPlayer
             return True
         return False
+    #Selección interna del ataque del jugador dependiendo de su selección externa
 
     def retriveLastAttack(self):
         if self.lastAttack != None:
             return self.lastAttack
         else:
             return None
+    #Deja señalado el último ataque utilizado por el jugador
 
     def retriveUpdatedCharecters(self):
         if self.updatedPlayer != None and self.updatedEnemy != None:
@@ -164,6 +173,7 @@ class ActionMenu:
             return self.updatedPlayer, self.updatedEnemy
         else:
             return None, None
+    #Devuelve los estados de los dos personajes (jugador y enemigo)
 
     def updateCharactersBasedOnAttack(self, whosTurn):
 
@@ -239,6 +249,7 @@ class ActionMenu:
     def generalReload(self):
         self.thisScreen.blit(self.common.bg_cut, (0, 600 - 360))
         self.thisScreen.blit(self.common.selection_border, (0, 0))
+    #Recarga la pantalla del juego, con fondo y borde de selección
 
     def attackAsEnemy(self, attack):
         self.lastAttack = attack

@@ -1,5 +1,7 @@
 from enums import Enums
-
+#A lo largo de la página, se definen:
+#Índices de los botones de selección del menú, con sus cambios de estado y con
+#posibilidad de pasar al mínimo si se intenta ir más allá del máximo
 class inGameButtonsInteractor:
 
     # Inventory, Attack
@@ -104,3 +106,4 @@ class inGameButtonsInteractor:
                 updatedIndex = actualIndex + 1
 
         return updatedIndex
+

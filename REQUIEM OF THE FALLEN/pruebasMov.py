@@ -1,4 +1,5 @@
 import pygame
+#Pruebas de movimiento con funciones directas de pygame
 
 pygame.init()
 
