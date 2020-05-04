@@ -80,6 +80,8 @@ class MainMenu(ScreenProtocol):
             self.mainManager.initAbout()
             return True
         elif  selectedButtonIndex == 2: #EXIT
+            self.common.exit_sfx.play()
+            pygame.time.wait(1000)
             self.mainManager.finishGameSession()
             return True
 

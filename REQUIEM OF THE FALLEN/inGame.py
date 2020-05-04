@@ -54,20 +54,24 @@ class InGame(ScreenProtocol):
                 drawLabel(self.screen, "HP: " + str(self.player.vida), constants.colors.black, constants.colors.trasparent, 20, (202,3))
                 drawLabel(self.screen, "Mana: " + str(self.player.mana), constants.colors.black, constants.colors.trasparent, 20, (202, 23))
                 drawLabel(self.screen, "HP: " + str(self.enemy.vida), constants.colors.black, constants.colors.trasparent, 20, (532, 3))
-                if self.player.vida <=0:
+                if self.player.vida <= 0:
                     index = 3
+                    pygame.mixer.music.stop()
+                    pygame.time.wait(500)
                     Common.exit_sfx.play()
                     pygame.time.wait(1000)
                     break
-                elif self.enemy.vida <=0:
+                elif self.enemy.vida <= 0:
                     index = 4
+                    pygame.mixer.music.stop()
+                    pygame.time.wait(500)
                     Common.Confirm.play()
                     pygame.time.wait(1000)
                     break
-                if self.player.mana <= 50:
+                if self.player.mana <= 30:
                     drawLabel(self.screen, "LOW!", constants.colors.cyan, constants.colors.trasparent, 20, (150, 23))
                     Constants.efectos.low_mana.play()
-                if self.player.vida <= 50:
+                if self.player.vida <= 30:
                     drawLabel(self.screen, "LOW!", constants.colors.green, constants.colors.trasparent, 20, (150, 3))
                     Constants.efectos.low_hp.play()
 
@@ -106,15 +110,17 @@ class InGame(ScreenProtocol):
             self.loadData()
         if index == 3:
             setBackgroundImage(img + bg + "stone.png")
-            drawLabel(self.screen, "GAME OVER", Constants.colors.white, Constants.colors.trasparent, 80, (300, 250))
+            drawLabel(self.screen, "GAME OVER", Constants.colors.white, Constants.colors.trasparent, 80, (250, 250))
             pygame.display.update()
-            pygame.time.wait(5000)
+            music(self.common.about_mus, -1)
+            pygame.time.wait(7000)
             self.mainManager.finishGameSession()
         elif index == 4:
             setBackgroundImage(img + bg + "stone.png")
-            drawLabel(self.screen, "YOU WIN!", Constants.colors.white, Constants.colors.trasparent, 80, (300, 250))
+            drawLabel(self.screen, "YOU WIN!", Constants.colors.white, Constants.colors.trasparent, 80, (270, 250))
             pygame.display.update()
-            pygame.time.wait(5000)
+            music(self.common.about_mus, -1)
+            pygame.time.wait(7000)
             self.mainManager.finishGameSession()
 
 

@@ -128,11 +128,7 @@ class ActionMenu:
 
     def reloadInventoryMenu(self, newIndex, withSound):
 
-        self.generalReload()
-        self.thisScreen.blit(health_bottle, (self.actionMenuScreenCorrectPosition(80, 90)))
-        self.thisScreen.blit(boost_bottle, (self.actionMenuScreenCorrectPosition(360, 90)))
-        self.thisScreen.blit(mana_bottle, (self.actionMenuScreenCorrectPosition(80, 180)))
-        self.thisScreen.blit(empty_bottle, (self.actionMenuScreenCorrectPosition(360, 180)))
+        self.redirectToMenu()
 
         if withSound:
             self.common.EndLine.play()
@@ -140,7 +136,8 @@ class ActionMenu:
     def redirectToMenu(self, selectedButtonIndex):
         if selectedButtonIndex == 0:
             print("Inventory")
-            self.initInventory()
+            #self.initInventory()
+            Common.error.play()
         elif selectedButtonIndex == 1:
             print("Attack")
             self.initAttack()
