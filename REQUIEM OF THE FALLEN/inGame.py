@@ -32,7 +32,7 @@ class InGame(ScreenProtocol):
             self.mainManager = mainManager
 
     def loadView(self):
-        global index_a, index
+        global index, index_a
         print("loadView")
         setBackgroundImage(img + bg + "stone.png")
         self.screen.blit(border, (0, 0))
@@ -64,16 +64,15 @@ class InGame(ScreenProtocol):
 
                 if index == 1:
                     attackAnimations(caballeroA, 208, 168, 9, 100, 50)
+
                     if index_a == 1:
                         effectAnimations(Slash, 600, 158, 8, 100, 100)
                         index = 0
-                        self.player.mana -= 10
-                        self.enemy.vida -= 10
+                        
                     if index_a == 2:
-                        effectAnimations(Magic, 600, 158, 12, 100, 100)
+                        effectAnimations(Magic, 600, 158, 8, 100, 100)
                         index = 0
-                        self.player.mana -= 30
-                        self.enemy.vida -= 30
+
             self.loadData()
 
     def loadData(self):
