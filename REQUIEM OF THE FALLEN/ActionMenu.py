@@ -76,8 +76,8 @@ class ActionMenu:
         return newx, newy
 
     def reloadBaseMenu(self, newIndex, withSound):
-        # Unselected view
 
+        self.generalReload()
         self.thisScreen.blit(self.cons.botones.INVENTORY_n, (self.actionMenuScreenCorrectPosition(80, 90)))
         self.thisScreen.blit(self.cons.botones.ATTACK_n, ((self.actionMenuScreenCorrectPosition(360, 90))))
 
@@ -91,9 +91,15 @@ class ActionMenu:
         elif selectedButton == self.buttonsInteractor.baseButtons[1]:
             self.thisScreen.blit(self.cons.botones.ATTACK_s, ((self.actionMenuScreenCorrectPosition(360, 90))))
 
+    def generalReload(self):
+
+        self.thisScreen.blit(self.common.bg_cut, (0, 600 - 360))
+        self.thisScreen.blit(self.common.selection_border, (0, 0))
+        pygame.display.update()
 
     def reloadAttackMenu(self, newIndex, withSound):
 
+        self.generalReload()
         self.thisScreen.blit(self.cons.botones.SLASH_n, (self.actionMenuScreenCorrectPosition(20, 20)))
         self.thisScreen.blit(self.cons.botones.SPELL_n, (self.actionMenuScreenCorrectPosition(140, 20)))
 
