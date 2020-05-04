@@ -90,9 +90,9 @@ class InGame(ScreenProtocol):
         self.player = player
         self.enemy = enemy
 
-        if lastAttack == Enums.inGame.Menu.attack.Button.slash:
+        if lastAttack == Enums.inGame.Menu.Attacks.slash:
             print("Execute animations for slash attack")
-        elif lastAttack == Enums.inGame.Menu.attack.Button.magic:
+        elif lastAttack == Enums.inGame.Menu.Attacks.magicPlayer:
             print("Execute animations for Magic attack")
 
     def completionForSelectedItem(self):
