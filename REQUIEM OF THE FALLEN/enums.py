@@ -31,3 +31,38 @@ class Enums:
             none = -1
             right = 0
             left = 1
+
+    class inGame:
+        class Menu:
+            class States(Enum):
+                baseState = 0
+                inventory = 1
+                attack = 2
+            class baseState:
+                class Button(Enum):
+                    inventory = 0
+                    attack = 1
+                class directions(Enum):
+                    none = -1
+                    right = 0
+                    left = 1
+            class inventory:
+                class Button(Enum):
+                    health = 0
+                    mana = 1
+                    boost = 2
+                    empty = 3
+                class directions(Enum):
+                    none = -1
+                    right = 0
+                    left = 1
+                    up = 2
+                    down = 3
+            class attack:
+                class Button(Enum):
+                    slash = 0
+                    magic = 1
+                class directions(Enum):
+                    none = -1
+                    right = 0
+                    left = 1
