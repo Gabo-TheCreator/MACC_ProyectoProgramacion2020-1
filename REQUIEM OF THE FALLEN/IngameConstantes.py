@@ -101,6 +101,7 @@ frame = 1
 def idleAnimations():
     global frame, nextFrame
     hideSprite(caballeroA)
+    hideSprite(Magic)
     hideSprite(Slash)
     moveSprite(caballero, 200, 168, True)
     showSprite(caballero)

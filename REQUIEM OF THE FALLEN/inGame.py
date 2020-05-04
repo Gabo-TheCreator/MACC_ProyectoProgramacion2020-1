@@ -9,6 +9,8 @@ from enums import Enums
 from Character import Character
 from ActionMenu import ActionMenu
 
+index = 0
+index_a = 0
 
 class InGame(ScreenProtocol):
     screen: pygame.surface = None
@@ -30,8 +32,8 @@ class InGame(ScreenProtocol):
             self.mainManager = mainManager
 
     def loadView(self):
-        index = 0
-        index_a = 0
+        global index, index_a
+
         print("loadView")
         setBackgroundImage(img + bg + "stone.png")
         self.screen.blit(border, (0, 0))
@@ -42,10 +44,10 @@ class InGame(ScreenProtocol):
             if clock() > nextFrame:
                 pygame.draw.rect(self.screen, Constants.colors.black, (0, 0, 200, 20))
                 pygame.draw.rect(self.screen, Constants.colors.black, (0, 20, 200, 20))
-                pygame.draw.rect(self.screen, Constants.colors.green, (0,0, 2*(self.player.vida),20))
-                pygame.draw.rect(self.screen, Constants.colors.cyan, (0,20, 2*(self.player.mana),20))
+                pygame.draw.rect(self.screen, Constants.colors.green, (0, 0, 2*(self.player.vida), 20))
+                pygame.draw.rect(self.screen, Constants.colors.cyan, (0, 20, 2*(self.player.mana), 20))
                 pygame.draw.rect(self.screen, Constants.colors.black, (600, 0, 200, 20))
-                pygame.draw.rect(self.screen, Constants.colors.red, (600+(200-self.enemy.vida/2.5),0, self.enemy.vida/2.5, 20))
+                pygame.draw.rect(self.screen, Constants.colors.red, (600+(200-self.enemy.vida/2.5), 0, self.enemy.vida/2.5, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightGreen, (200, 0, 100, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightBlue, (200, 20, 100, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightRed, (530, 0, 70, 20))
@@ -61,21 +63,17 @@ class InGame(ScreenProtocol):
                 if index == 0:
                     idleAnimations()
 
-                    if keyPressed("a"):
-                        hideSprite(caballero)
-                        index = 1
-                        index_a = 1
-
-                    if keyPressed("s"):
-                        index = 2
-
                 if index == 1:
                     attackAnimations(caballeroA, 208, 168, 9, 100, 50)
+
                     if index_a == 1:
                         effectAnimations(Slash, 600, 158, 8, 100, 100)
                         index = 0
-                        self.player.mana -=20
-                        self.player.vida -=15
+                        
+                    if index_a == 2:
+                        effectAnimations(Magic, 600, 158, 8, 100, 100)
+                        index = 0
+
 
             self.loadData()
 
@@ -84,6 +82,7 @@ class InGame(ScreenProtocol):
         self.actionMenu.displayMenu(self.completionForSelectedAttack, self.completionForSelectedItem, self.whosTurn)
 
     def completionForSelectedAttack(self):
+        global index, index_a
         print("The user select an attack")
         lastAttack = self.actionMenu.retriveLastAttack()
         player, enemy = self.actionMenu.retriveUpdatedCharecters()
@@ -92,8 +91,14 @@ class InGame(ScreenProtocol):
 
         if lastAttack == Enums.inGame.Menu.Attacks.slash:
             print("Execute animations for slash attack")
+            hideSprite(caballero)
+            index = 1
+            index_a = 1
         elif lastAttack == Enums.inGame.Menu.Attacks.magicPlayer:
             print("Execute animations for Magic attack")
+            hideSprite(caballero)
+            index = 1
+            index_a = 2
 
     def completionForSelectedItem(self):
         print("The user select an item")
