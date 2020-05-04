@@ -42,7 +42,7 @@ class ActionMenu:
             self.thisEnemy = enemy
             self.thisScreen = screen
 
-    def displayMenu(self, completionForAttack, completioForItem, whosTurn):
+    def displayMenu(self, completionForAttack, completionForItem, whosTurn):
         if self.menuState == Enums.inGame.Menu.States.baseState:
             self.reloadBaseMenu(self.buttonsInteractor.baseButtonsIndex, False)
             if keyPressed("right"):
@@ -53,6 +53,7 @@ class ActionMenu:
                 self.reloadBaseMenu(self.buttonsInteractor.baseButtonsIndex, True)
             elif keyPressed("return"):
                 self.redirectToMenu(self.buttonsInteractor.baseButtonsIndex)
+                self.common.EndLine.play()
 
         elif self.menuState == Enums.inGame.Menu.States.inventory:
             if keyPressed("right"):
@@ -62,7 +63,7 @@ class ActionMenu:
             elif keyPressed("return"):
                 print("Inventory")
                 self.initBaseMenu()
-                completioForItem()
+                completionForItem()
 
         elif self.menuState == Enums.inGame.Menu.States.attack:
             self.reloadAttackMenu(self.buttonsInteractor.attackButtonsIndex, False)
@@ -75,6 +76,7 @@ class ActionMenu:
             elif keyPressed("return"):
                 if self.selectAttack(self.buttonsInteractor.attackButtonsIndex):
                     if self.updateCharactersBasedOnAttack(whosTurn):
+                        self.common.EndLine.play()
                         self.initBaseMenu()
                         completionForAttack()
 
@@ -180,9 +182,10 @@ class ActionMenu:
         elif attackEnum == Enums.inGame.Menu.Attacks.miss:
             attack = miss
 
+        # Evaluate with the attack
         if whosTurn == Enums.CharacterType.player:
-            # Evaluate with the attack
-                # Player
+
+            # Player
             pNewMana = int(player.getMana()) - int(attack.getManaCost())
 
             uPlayer = Character(player.getHealth(),
@@ -193,7 +196,7 @@ class ActionMenu:
                                 player.getAttacks(),
                                 player.getType())
 
-                # Enemy
+            # Enemy
             eNewHealth = int(enemy.getHealth()) - int(attack.getDamage())
             uEnemy = Character(eNewHealth,
                                enemy.getMana(),
@@ -204,7 +207,25 @@ class ActionMenu:
                                enemy.getType())
 
         elif whosTurn == Enums.CharacterType.enemy:
-            print("The enemy attacked!")
+            # Player
+            pNewHealth = int(player.getHealth()) - int(attack.getDamage())
+            uPlayer = Character(pNewHealth,
+                                player.getMana(),
+                                player.getBoost(),
+                                player.getName(),
+                                player.getItems(),
+                                player.getAttacks(),
+                                player.getType())
+
+            # Enemy
+            eNewMana = int(enemy.getMana()) - int(attack.getManaCost())
+            uEnemy = Character(enemy.getHealth(),
+                               eNewMana,
+                               enemy.getBoost(),
+                               enemy.getName(),
+                               enemy.getItems(),
+                               enemy.getAttacks(),
+                               enemy.getType())
 
         self.updatedPlayer = uPlayer
         self.updatedEnemy = uEnemy
