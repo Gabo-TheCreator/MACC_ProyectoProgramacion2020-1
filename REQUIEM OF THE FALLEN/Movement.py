@@ -2,7 +2,7 @@ from Constantes import Constants
 from pygame_functions import *
 import pygame
 
-
+#Pruebas de movimiento con funciones introducidas en pygame_functions.py
 pygame.init()
 wn = screenSize(800, 600)
 pygame.display.set_caption("Movement trial")

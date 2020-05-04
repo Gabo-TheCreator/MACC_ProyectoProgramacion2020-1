@@ -40,7 +40,8 @@ class MainMenu(ScreenProtocol):
                 elif key == K_RETURN:
                     if self.redirectToScreen(self.buttonsInteractor.buttonIndex):
                         break
-
+            #Dentro del menú principal, espera el evento y lo enlaza con las acciones definidas en
+            #MainMenuButtonsInteractor(), (derecha, izquierda, ENTER)
             pygame.display.update()
 
     def reloadViewsForSelectedButtonInIndex(self, newIndex, withSound):
@@ -50,7 +51,7 @@ class MainMenu(ScreenProtocol):
         self.screen.blit(self.common.PLAY_n, (125, 412.5))
         self.screen.blit(self.common.ABOUT_n, (325, 412.5))
         self.screen.blit(self.common.EXIT_n, (525, 412.5))
-
+        #Genera la pantalla principal
         if withSound:
             self.common.EndLine.play()
 
@@ -69,7 +70,7 @@ class MainMenu(ScreenProtocol):
             print("Exit")
             self.screen.blit(self.common.awa, (500, 400))
             self.screen.blit(self.common.EXIT_s, (525, 412.5))
-
+        #Genera una imagen específica para cada caso en que se señale alguna opción
     def redirectToScreen(self, selectedButtonIndex):
         # -screenIndex: is the index that we should go to based on all the buttons indexes
         if selectedButtonIndex == 0: #PLAY
@@ -84,5 +85,7 @@ class MainMenu(ScreenProtocol):
             pygame.time.wait(1000)
             self.mainManager.finishGameSession()
             return True
+        #Al seleccionar una opción, se redirige a la pantalla a la que está enlazada
+        #O acaba el juego, como es el caso de EXIT
 
         return False

@@ -1,7 +1,7 @@
 import pygame,time
 import Constantes as cst
 constants = cst.Constants
-
+#Versión básica de drawText
 screen=pygame.display.set_mode((300, 300))
 
 def text(texto, coordenadas, color, fondo, tamaño, tiempo):
@@ -13,7 +13,7 @@ def text(texto, coordenadas, color, fondo, tamaño, tiempo):
     Beep=constants.efectos.Beep
     Beep.play()
     for _ in range(len(texto)):
-        pygame.event.pump() ## this is very important if your event queue is not handled properly elsewhere. Alternativly pygame.event.pump() would work.
+        pygame.event.pump()
         time.sleep(tiempo) ##change this for faster or slower text animation
         char = char + texto[letra]
         text = basicfont.render(char, False, color, fondo) #First tuple is text color, second tuple is background color

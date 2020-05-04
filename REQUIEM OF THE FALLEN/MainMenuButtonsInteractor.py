@@ -1,6 +1,7 @@
 from enums import Enums
 
-
+#En este menú se definen las acciones del menú principal, como
+#el índice máximo, y al superarse, volver al mínimo sin congelar el juego
 class MainMenuButtonsInteractor:
     # Actions Buttons
     buttons = [Enums.MainMenu.Button.play.name,
