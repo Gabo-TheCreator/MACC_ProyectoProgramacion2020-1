@@ -38,6 +38,11 @@ class Enums:
                 baseState = 0
                 inventory = 1
                 attack = 2
+            class Attacks(Enum):
+                slash = 0
+                magicPlayer = 1
+                magicEnemy = 2
+                miss = 3
             class baseState:
                 class Button(Enum):
                     inventory = 0

@@ -10,3 +10,15 @@ class Ataque:
         self.costoDeMana = costoDeMana
         self.nombre = nombre
         self.boost = boost
+
+    def getDamage(self):
+        return self.dano
+
+    def getManaCost(self):
+        return self.costoDeMana
+
+    def getName(self):
+        return self.nombre
+
+    def getBoost(self):
+        return self.boost

@@ -20,3 +20,24 @@ class Character:
         self.items = items
         self.ataques = ataques
         self.tipo = tipo
+
+    def getHealth(self):
+        return self.vida
+
+    def getMana(self):
+        return self.mana
+
+    def getName(self):
+        return self.nombre
+
+    def getBoost(self):
+        return self.boost
+
+    def getItems(self):
+        return self.items
+
+    def getAttacks(self):
+        return self.ataques
+
+    def getType(self):
+        return self.tipo

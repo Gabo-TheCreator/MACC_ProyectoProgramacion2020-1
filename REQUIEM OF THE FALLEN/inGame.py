@@ -1,6 +1,5 @@
 import pygame
 import Common
-from pygame.locals import *
 from Utils import *
 from Constantes import Constants
 from ScreenProtocol import ScreenProtocol
@@ -8,12 +7,7 @@ from IngameConstantes import *
 from pygame_functions import *
 from enums import Enums
 from Character import Character
-from Item import Item
-from Ataque import Ataque
 from ActionMenu import ActionMenu
-
-
-
 
 
 class InGame(ScreenProtocol):
@@ -25,12 +19,12 @@ class InGame(ScreenProtocol):
     player = Character(100, 100, 1.0, "Caballerito", [health_potion, mana_potion, boost_potion, empty_potion], [slash_attack, magic_player], Enums.CharacterType.player)
     enemy = Character(500, 500, 1.0, "Kho'wid", [], [slash_attack, magic_enemy, miss], Enums.CharacterType.enemy)
     actionMenu = None
+    whosTurn: Enums.CharacterType = None
 
     def __init__(self, screen, mainManager=None):
         self.screen = screen
         self.actionMenu = ActionMenu()
-        self.actionMenu.updateMenuData(self.player, self.enemy, self.screen)
-        self.actionMenu.displayMenu()
+        self.whosTurn = Enums.CharacterType.player
 
         if mainManager != None:
             self.mainManager = mainManager
@@ -82,13 +76,27 @@ class InGame(ScreenProtocol):
                         index = 0
                         self.player.mana -=20
                         self.player.vida -=15
-            #AQUÍ HERMOSURAS, AQUÍ!!!
+
             self.loadData()
 
     def loadData(self):
         self.actionMenu.updateMenuData(self.player, self.enemy, self.screen)
-        self.actionMenu.displayMenu()
+        self.actionMenu.displayMenu(self.completionForSelectedAttack, self.completionForSelectedItem, self.whosTurn)
 
+    def completionForSelectedAttack(self):
+        print("The user select an attack")
+        lastAttack = self.actionMenu.retriveLastAttack()
+        player, enemy = self.actionMenu.retriveUpdatedCharecters()
+        self.player = player
+        self.enemy = enemy
+
+        if lastAttack == Enums.inGame.Menu.attack.Button.slash:
+            print("Execute animations for slash attack")
+        elif lastAttack == Enums.inGame.Menu.attack.Button.magic:
+            print("Execute animations for Magic attack")
+
+    def completionForSelectedItem(self):
+        print("The user select an item")
 
     def redirectToScreen(self, selectedButtonIndex):
         if selectedButtonIndex == 0: #Exit ~> go mainMenu

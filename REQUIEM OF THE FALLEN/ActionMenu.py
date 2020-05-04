@@ -4,17 +4,23 @@ from Constantes import Constants
 from inGameButtonsInteractor import inGameButtonsInteractor
 from pygame_functions import *
 from enums import Enums
+from Character import Character
+from IngameConstantes import *
+
 
 class ActionMenu:
 
     cons = Constants
     common = Common
 
-    thisPlayer = None
-    thisEnemy = None
+    thisPlayer: Character = None
+    updatedPlayer: Character = None
+    thisEnemy: Character = None
+    updatedEnemy: Character = None
     thisScreen = None
 
     menuState = None
+    lastAttack = None
 
     buttonsInteractor = inGameButtonsInteractor()
 
@@ -36,9 +42,7 @@ class ActionMenu:
             self.thisEnemy = enemy
             self.thisScreen = screen
 
-    def displayMenu(self):
-        print("displayMenu")
-
+    def displayMenu(self, completionForAttack, completioForItem, whosTurn):
         if self.menuState == Enums.inGame.Menu.States.baseState:
             self.reloadBaseMenu(self.buttonsInteractor.baseButtonsIndex, False)
             if keyPressed("right"):
@@ -49,6 +53,7 @@ class ActionMenu:
                 self.reloadBaseMenu(self.buttonsInteractor.baseButtonsIndex, True)
             elif keyPressed("return"):
                 self.redirectToMenu(self.buttonsInteractor.baseButtonsIndex)
+
         elif self.menuState == Enums.inGame.Menu.States.inventory:
             if keyPressed("right"):
                 print("Inventory")
@@ -56,14 +61,22 @@ class ActionMenu:
                 print("Inventory")
             elif keyPressed("return"):
                 print("Inventory")
+                self.initBaseMenu()
+                completioForItem()
+
         elif self.menuState == Enums.inGame.Menu.States.attack:
             self.reloadAttackMenu(self.buttonsInteractor.attackButtonsIndex, False)
             if keyPressed("right"):
-                print("Attack")
+                self.buttonsInteractor.attackButtonsIndex = self.buttonsInteractor.validateAttackButtonsNewIndexPosition(self.buttonsInteractor.attackButtonsIndex, Enums.inGame.Menu.attack.directions.right)
+                self.reloadAttackMenu(self.buttonsInteractor.attackButtonsIndex, True)
             elif keyPressed("left"):
-                print("Attack")
+                self.buttonsInteractor.attackButtonsIndex = self.buttonsInteractor.validateAttackButtonsNewIndexPosition(self.buttonsInteractor.attackButtonsIndex, Enums.inGame.Menu.attack.directions.left)
+                self.reloadAttackMenu(self.buttonsInteractor.attackButtonsIndex, True)
             elif keyPressed("return"):
-                print("Attack")
+                if self.selectAttack(self.buttonsInteractor.attackButtonsIndex):
+                    if self.updateCharactersBasedOnAttack(whosTurn):
+                        self.initBaseMenu()
+                        completionForAttack()
 
     def actionMenuScreenCorrectPosition(self, xpos, ypos):
 
@@ -91,17 +104,26 @@ class ActionMenu:
         elif selectedButton == self.buttonsInteractor.baseButtons[1]:
             self.thisScreen.blit(self.cons.botones.ATTACK_s, ((self.actionMenuScreenCorrectPosition(360, 90))))
 
-    def generalReload(self):
-
-        self.thisScreen.blit(self.common.bg_cut, (0, 600 - 360))
-        self.thisScreen.blit(self.common.selection_border, (0, 0))
-        pygame.display.update()
-
     def reloadAttackMenu(self, newIndex, withSound):
 
         self.generalReload()
         self.thisScreen.blit(self.cons.botones.SLASH_n, (self.actionMenuScreenCorrectPosition(80, 90)))
         self.thisScreen.blit(self.cons.botones.SPELL_n, (self.actionMenuScreenCorrectPosition(360, 90)))
+
+        if withSound:
+            self.common.EndLine.play()
+
+        selectedButton = self.buttonsInteractor.attackButtons[newIndex]
+
+        if selectedButton == self.buttonsInteractor.attackButtons[0]:
+            self.thisScreen.blit(self.cons.botones.SLASH_s, (self.actionMenuScreenCorrectPosition(80, 90)))
+        elif selectedButton == self.buttonsInteractor.attackButtons[1]:
+            self.thisScreen.blit(self.cons.botones.SPELL_s, (self.actionMenuScreenCorrectPosition(360, 90)))
+
+
+    def reloadInventoryMenu(self, newIndex, withSound):
+
+        self.generalReload()
 
         if withSound:
             self.common.EndLine.play()
@@ -114,3 +136,81 @@ class ActionMenu:
             print("Attack")
             self.initAttack()
 
+    def selectAttack(self, indexPos):
+        if indexPos == Enums.inGame.Menu.attack.Button.slash.value:
+            self.lastAttack = Enums.inGame.Menu.Attacks.slash
+            return True
+        elif indexPos == Enums.inGame.Menu.attack.Button.magic.value:
+            self.lastAttack = Enums.inGame.Menu.Attacks.magicPlayer
+            return True
+        return False
+
+    def retriveLastAttack(self):
+        if self.lastAttack != None:
+            return self.lastAttack
+        else:
+            return None
+
+    def retriveUpdatedCharecters(self):
+        if self.updatedPlayer != None and self.updatedEnemy != None:
+            self.thisPlayer = None
+            self.thisEnemy = None
+            return self.updatedPlayer, self.updatedEnemy
+        else:
+            return None, None
+
+    def updateCharactersBasedOnAttack(self, whosTurn):
+
+        attackEnum = self.lastAttack
+
+        player = self.thisPlayer
+        enemy = self.thisEnemy
+
+        uPlayer = None
+        uEnemy = None
+
+        ## Convert from attack enum to attack value
+        attack = None
+        if attackEnum == Enums.inGame.Menu.Attacks.slash:
+            attack = slash_attack
+        elif attackEnum == Enums.inGame.Menu.Attacks.magicPlayer:
+            attack = magic_player
+        elif attackEnum == Enums.inGame.Menu.Attacks.magicEnemy:
+            attack = magic_enemy
+        elif attackEnum == Enums.inGame.Menu.Attacks.miss:
+            attack = miss
+
+        if whosTurn == Enums.CharacterType.player:
+            # Evaluate with the attack
+                # Player
+            pNewMana = int(player.getMana()) - int(attack.getManaCost())
+
+            uPlayer = Character(player.getHealth(),
+                                pNewMana,
+                                player.getBoost(),
+                                player.getName(),
+                                player.getItems(),
+                                player.getAttacks(),
+                                player.getType())
+
+                # Enemy
+            eNewHealth = int(enemy.getHealth()) - int(attack.getDamage())
+            uEnemy = Character(eNewHealth,
+                               enemy.getMana(),
+                               enemy.getBoost(),
+                               enemy.getName(),
+                               enemy.getItems(),
+                               enemy.getAttacks(),
+                               enemy.getType())
+
+        elif whosTurn == Enums.CharacterType.enemy:
+            print("The enemy attacked!")
+
+        self.updatedPlayer = uPlayer
+        self.updatedEnemy = uEnemy
+
+        return True
+
+    def generalReload(self):
+        self.thisScreen.blit(self.common.bg_cut, (0, 600 - 360))
+        self.thisScreen.blit(self.common.selection_border, (0, 0))
