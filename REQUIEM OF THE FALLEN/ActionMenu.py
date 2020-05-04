@@ -77,6 +77,7 @@ class ActionMenu:
                 if self.selectAttack(self.buttonsInteractor.attackButtonsIndex):
                     if self.updateCharactersBasedOnAttack(whosTurn):
                         self.common.EndLine.play()
+                        pygame.time.wait(100)
                         self.initBaseMenu()
                         completionForAttack()
 
