@@ -21,7 +21,7 @@ class InGame(ScreenProtocol):
 
     player = Character(100, 100, 1.0, "Caballerito", [health_potion, mana_potion, boost_potion, empty_potion],
                        [slash_attack, magic_player], Enums.CharacterType.player)
-    enemy = Character(500, 500, 1.0, "Kho'wid", [], [slash_attack, miss, magic_enemy], Enums.CharacterType.enemy)
+    enemy = Character(250, 500, 1.0, "Kho'wid", [], [slash_attack, miss, magic_enemy], Enums.CharacterType.enemy)
     actionMenu = None
     whosTurn: Enums.CharacterType = None
 
@@ -47,7 +47,7 @@ class InGame(ScreenProtocol):
                 pygame.draw.rect(self.screen, Constants.colors.green, (0, 0, 2 * (self.player.vida), 20))
                 pygame.draw.rect(self.screen, Constants.colors.cyan, (0, 20, 2 * (self.player.mana), 20))
                 pygame.draw.rect(self.screen, Constants.colors.black, (600, 0, 200, 20))
-                pygame.draw.rect(self.screen, Constants.colors.red, (600+(200-self.enemy.vida/2.5), 0, self.enemy.vida/2.5, 20))
+                pygame.draw.rect(self.screen, Constants.colors.red, (600+(200-self.enemy.vida/1.25), 0, self.enemy.vida/1.25, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightGreen, (200, 0, 100, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightBlue, (200, 20, 100, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightRed, (530, 0, 70, 20))

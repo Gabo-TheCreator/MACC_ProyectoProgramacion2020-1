@@ -76,9 +76,9 @@ addSpriteImage(Magic, img + spr + sfx + mag + "magic_effect9.png")
 addSpriteImage(Magic, img + spr + sfx + mag + "magic_effect10.png")
 addSpriteImage(Magic, img + spr + sfx + mag + "magic_effect11.png")
 
-slash_attack = Ataque(10, 10, "Slash", 1.0)
-magic_enemy = Ataque(50, 50, "Magic Spell", 1.0)
-magic_player = Ataque(30, 30, "Magic Spell", 1.0)
+slash_attack = Ataque(10, 0, "Slash", 1.0)
+magic_enemy = Ataque(15, 0, "Magic Spell", 1.0)
+magic_player = Ataque(30, 10, "Magic Spell", 1.0)
 miss = Ataque(0, 0, "Miss!", 1.0)
 
 # =============== ITEM SPRITES AND OBJECT CREATION =================== #
