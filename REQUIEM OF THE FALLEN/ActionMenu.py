@@ -100,8 +100,8 @@ class ActionMenu:
     def reloadAttackMenu(self, newIndex, withSound):
 
         self.generalReload()
-        self.thisScreen.blit(self.cons.botones.SLASH_n, (self.actionMenuScreenCorrectPosition(20, 20)))
-        self.thisScreen.blit(self.cons.botones.SPELL_n, (self.actionMenuScreenCorrectPosition(140, 20)))
+        self.thisScreen.blit(self.cons.botones.SLASH_n, (self.actionMenuScreenCorrectPosition(80, 90)))
+        self.thisScreen.blit(self.cons.botones.SPELL_n, (self.actionMenuScreenCorrectPosition(360, 90)))
 
         if withSound:
             self.common.EndLine.play()
