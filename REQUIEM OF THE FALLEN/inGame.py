@@ -33,7 +33,6 @@ class InGame(ScreenProtocol):
 
     def loadView(self):
         global index, index_a
-
         print("loadView")
         setBackgroundImage(img + bg + "stone.png")
         self.screen.blit(border, (0, 0))
@@ -44,14 +43,14 @@ class InGame(ScreenProtocol):
             if clock() > nextFrame:
                 pygame.draw.rect(self.screen, Constants.colors.black, (0, 0, 200, 20))
                 pygame.draw.rect(self.screen, Constants.colors.black, (0, 20, 200, 20))
-                pygame.draw.rect(self.screen, Constants.colors.green, (0, 0, 2*(self.player.vida), 20))
-                pygame.draw.rect(self.screen, Constants.colors.cyan, (0, 20, 2*(self.player.mana), 20))
+                pygame.draw.rect(self.screen, Constants.colors.green, (0, 0, 2 * (self.player.vida), 20))
+                pygame.draw.rect(self.screen, Constants.colors.cyan, (0, 20, 2 * (self.player.mana), 20))
                 pygame.draw.rect(self.screen, Constants.colors.black, (600, 0, 200, 20))
                 pygame.draw.rect(self.screen, Constants.colors.red, (600+(200-self.enemy.vida/2.5), 0, self.enemy.vida/2.5, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightGreen, (200, 0, 100, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightBlue, (200, 20, 100, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightRed, (530, 0, 70, 20))
-                drawLabel(self.screen, "HP: "+str(self.player.vida), constants.colors.black, constants.colors.trasparent, 20, (202,3))
+                drawLabel(self.screen, "HP: " + str(self.player.vida), constants.colors.black, constants.colors.trasparent, 20, (202,3))
                 drawLabel(self.screen, "Mana: " + str(self.player.mana), constants.colors.black, constants.colors.trasparent, 20, (202, 23))
                 drawLabel(self.screen, "HP: " + str(self.enemy.vida), constants.colors.black, constants.colors.trasparent, 20, (532, 3))
 
@@ -73,7 +72,6 @@ class InGame(ScreenProtocol):
                     if index_a == 2:
                         effectAnimations(Magic, 600, 158, 8, 100, 100)
                         index = 0
-
 
             self.loadData()
 

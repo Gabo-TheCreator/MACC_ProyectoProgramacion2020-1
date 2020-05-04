@@ -103,6 +103,7 @@ def idleAnimations():
     hideSprite(caballeroA)
     hideSprite(Magic)
     hideSprite(Slash)
+    hideSprite(Magic)
     moveSprite(caballero, 200, 168, True)
     showSprite(caballero)
     moveSprite(virus, 600, 168, True)
