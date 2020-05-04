@@ -22,7 +22,12 @@ class About(ScreenProtocol):
 
     def loadView(self):
         # Initialize
+
+
         self.common.Confirm.play()
+        pygame.time.wait(1000)
+        music(self.common.about_mus, -1)
+
         waitBeforeLoadingNextActions(self.mainManager.screenState)
         self.screen.blit(self.common.bg_tit, (0, 0))
         pygame.display.update()
@@ -32,6 +37,8 @@ class About(ScreenProtocol):
         drawText(self.screen, "JOSE GABRIEL CUADROS CARDENAS", (100, 280), self.cons.colors.white, self.cons.colors.trasparent, 40, 100, Enums.TextAnimations.typewriter)
         drawText(self.screen, "ALL RIGHTS RESERVED. 2020.", (10, 570), self.cons.colors.lightPurple, self.cons.colors.trasparent, 30, 1, Enums.TextAnimations.none)
         drawText(self.screen, "PURO MACC", (650, 570), self.cons.colors.cyan, self.cons.colors.trasparent, 30, 1, Enums.TextAnimations.none)
+        drawText(self.screen, "v 1.0", (10, 550), self.cons.colors.lightPurple, self.cons.colors.trasparent, 30, 1, Enums.TextAnimations.none)
+
         self.screen.blit(Common.BACK_s, (300, 400))
         pygame.display.update()
 

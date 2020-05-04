@@ -94,6 +94,8 @@ class ActionMenu:
     def reloadBaseMenu(self, newIndex, withSound):
 
         self.generalReload()
+        drawLabel(self.thisScreen, "Coming Soon!", Constants.colors.white, Constants.colors.trasparent, 20, (226.5, 420))
+
         self.thisScreen.blit(self.cons.botones.INVENTORY_n, (self.actionMenuScreenCorrectPosition(80, 90)))
         self.thisScreen.blit(self.cons.botones.ATTACK_n, ((self.actionMenuScreenCorrectPosition(360, 90))))
 

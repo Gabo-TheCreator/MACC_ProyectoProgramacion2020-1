@@ -27,6 +27,7 @@ class Introduction(ScreenProtocol):
         # Initialize
         self.common.Confirm.play()
         waitBeforeLoadingNextActions(self.mainManager.screenState)
+        music(self.common.menu_theme, -1)
         self.screen.blit(Constants.extras.bg_2, (0, 0))
         pygame.display.update()
         drawText(self.screen, "REQUIEM OF THE FALLEN", (110,100), self.cons.colors.lightPurple, self.cons.colors.trasparent,60,0.2,
@@ -72,6 +73,7 @@ class Introduction(ScreenProtocol):
                  self.cons.colors.trasparent, 30, 100,
                  Enums.TextAnimations.typewriter)
         pygame.time.wait(500)
+        drawLabel(self.screen, "Coming Soon!", Constants.colors.white, Constants.colors.trasparent, 20, (146.5, 380))
         self.screen.blit(Constants.botones.INVENTORY_n, (146.6, 400))
         Common.Beep.play()
         pygame.display.update()

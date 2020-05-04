@@ -39,7 +39,7 @@ class InGame(ScreenProtocol):
         setBackgroundImage(img + bg + "stone.png")
         self.screen.blit(border, (0, 0))
         pygame.display.update()
-
+        music(self.common.battle, -1)
         while True:
             if clock() > nextFrame:
                 pygame.draw.rect(self.screen, Constants.colors.black, (0, 0, 200, 20))
@@ -54,11 +54,22 @@ class InGame(ScreenProtocol):
                 drawLabel(self.screen, "HP: " + str(self.player.vida), constants.colors.black, constants.colors.trasparent, 20, (202,3))
                 drawLabel(self.screen, "Mana: " + str(self.player.mana), constants.colors.black, constants.colors.trasparent, 20, (202, 23))
                 drawLabel(self.screen, "HP: " + str(self.enemy.vida), constants.colors.black, constants.colors.trasparent, 20, (532, 3))
-
+                if self.player.vida <=0:
+                    index = 3
+                    Common.exit_sfx.play()
+                    pygame.time.wait(1000)
+                    break
+                elif self.enemy.vida <=0:
+                    index = 4
+                    Common.Confirm.play()
+                    pygame.time.wait(1000)
+                    break
                 if self.player.mana <= 50:
                     drawLabel(self.screen, "LOW!", constants.colors.cyan, constants.colors.trasparent, 20, (150, 23))
+                    Constants.efectos.low_mana.play()
                 if self.player.vida <= 50:
                     drawLabel(self.screen, "LOW!", constants.colors.green, constants.colors.trasparent, 20, (150, 3))
+                    Constants.efectos.low_hp.play()
 
                 if index == 0:
                     idleAnimations()
@@ -69,12 +80,43 @@ class InGame(ScreenProtocol):
                     if index_a == 1:
                         effectAnimations(Slash, 600, 158, 8, 100, 100)
                         index = 0
-                        
-                    if index_a == 2:
-                        effectAnimations(Magic, 600, 158, 8, 100, 100)
+                        if self.player.mana <= 95:
+                            self.player.mana += 5
+
+                    if self.player.mana > -1:
+                        luck = random.randrange(20)
+                        if index_a == 2:
+                            effectAnimations(Magic, 600, 158, 8, 100, 100)
+                            index = 0
+                            if self.player.vida <= 95 and luck <= 4:
+                                self.player.vida += 5
+                    else:
+                        Common.error.play()
                         index = 0
+                        self.player.mana += 10
+                        self.enemy.vida += 30
+
+                    if self.player.vida <= 0:
+                        self.player.vida = 0
+                    elif self.enemy.vida <= 0:
+                        self.enemy.vida = 0
+
+
 
             self.loadData()
+        if index == 3:
+            setBackgroundImage(img + bg + "stone.png")
+            drawLabel(self.screen, "GAME OVER", Constants.colors.white, Constants.colors.trasparent, 80, (300, 250))
+            pygame.display.update()
+            pygame.time.wait(5000)
+            self.mainManager.finishGameSession()
+        elif index == 4:
+            setBackgroundImage(img + bg + "stone.png")
+            drawLabel(self.screen, "YOU WIN!", Constants.colors.white, Constants.colors.trasparent, 80, (300, 250))
+            pygame.display.update()
+            pygame.time.wait(5000)
+            self.mainManager.finishGameSession()
+
 
     def loadData(self):
         self.actionMenu.updateMenuData(self.player, self.enemy, self.screen)

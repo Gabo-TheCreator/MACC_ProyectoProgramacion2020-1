@@ -4,6 +4,7 @@ from MainMenuButtonsInteractor import MainMenuButtonsInteractor
 from ScreenProtocol import ScreenProtocol
 from Constantes import Constants
 from enums import Enums
+from Utils import *
 from pygame.locals import *
 
 class MainMenu(ScreenProtocol):
@@ -22,6 +23,7 @@ class MainMenu(ScreenProtocol):
             self.mainManager = mainManager
 
     def loadView(self):
+        music(Common.main_theme, -1)
         while True:
             # Initialize
             event = pygame.event.wait()
