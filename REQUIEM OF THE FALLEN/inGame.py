@@ -8,6 +8,7 @@ from pygame_functions import *
 from enums import Enums
 from Character import Character
 from ActionMenu import ActionMenu
+import random
 
 index = 0
 index_a = 0
@@ -18,8 +19,9 @@ class InGame(ScreenProtocol):
     cons = Constants
     mainManager = None
 
-    player = Character(100, 100, 1.0, "Caballerito", [health_potion, mana_potion, boost_potion, empty_potion], [slash_attack, magic_player], Enums.CharacterType.player)
-    enemy = Character(500, 500, 1.0, "Kho'wid", [], [slash_attack, magic_enemy, miss], Enums.CharacterType.enemy)
+    player = Character(100, 100, 1.0, "Caballerito", [health_potion, mana_potion, boost_potion, empty_potion],
+                       [slash_attack, magic_player], Enums.CharacterType.player)
+    enemy = Character(500, 500, 1.0, "Kho'wid", [], [slash_attack, miss, magic_enemy], Enums.CharacterType.enemy)
     actionMenu = None
     whosTurn: Enums.CharacterType = None
 
@@ -37,7 +39,6 @@ class InGame(ScreenProtocol):
         setBackgroundImage(img + bg + "stone.png")
         self.screen.blit(border, (0, 0))
         pygame.display.update()
-
 
         while True:
             if clock() > nextFrame:
@@ -78,6 +79,7 @@ class InGame(ScreenProtocol):
     def loadData(self):
         self.actionMenu.updateMenuData(self.player, self.enemy, self.screen)
         self.actionMenu.displayMenu(self.completionForSelectedAttack, self.completionForSelectedItem, self.whosTurn)
+        return True
 
     def completionForSelectedAttack(self):
         global index, index_a
@@ -98,10 +100,35 @@ class InGame(ScreenProtocol):
             index = 1
             index_a = 2
 
+        #Data needs to be reloaded before the enemy can auto-select an attack
+        if self.loadData():
+            self.makeDesitionForTheEnemy()
+
     def completionForSelectedItem(self):
         print("The user select an item")
 
     def redirectToScreen(self, selectedButtonIndex):
-        if selectedButtonIndex == 0: #Exit ~> go mainMenu
+        if selectedButtonIndex == 0:  # Exit ~> go mainMenu
             self.mainManager.initMainMenu()
             return True
+
+    # Enemy's turn
+    def makeDesitionForTheEnemy(self):
+        print("enemy's turn")
+        enemyAttacks = self.enemy.getAttacks()
+        totalAttacks = len(enemyAttacks)
+
+        randomAttack = int(random.uniform(0, totalAttacks))
+
+        self.actionMenu.attackAsEnemy(self.getAttackFromName(enemyAttacks[randomAttack].getName()))
+
+    def getAttackFromName(self, name):
+        if name == "Slash":
+            return Enums.inGame.Menu.Attacks.slash
+        elif name == "Magic Spell":
+            return Enums.inGame.Menu.Attacks.miss
+        elif name == "Miss!":
+            return Enums.inGame.Menu.Attacks.magicEnemy
+        else:
+            print("Unexpected error decoding the attack based on the name, please check the literal strings that is getting compared with.")
+            raise

@@ -239,3 +239,7 @@ class ActionMenu:
     def generalReload(self):
         self.thisScreen.blit(self.common.bg_cut, (0, 600 - 360))
         self.thisScreen.blit(self.common.selection_border, (0, 0))
+
+    def attackAsEnemy(self, attack):
+        self.lastAttack = attack
+        self.updateCharactersBasedOnAttack(Enums.CharacterType.enemy)
