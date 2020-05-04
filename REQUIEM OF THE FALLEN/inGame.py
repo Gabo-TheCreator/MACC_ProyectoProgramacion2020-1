@@ -8,6 +8,7 @@ from pygame_functions import *
 from enums import Enums
 from Character import Character
 from ActionMenu import ActionMenu
+import random
 
 
 class InGame(ScreenProtocol):
@@ -16,8 +17,9 @@ class InGame(ScreenProtocol):
     cons = Constants
     mainManager = None
 
-    player = Character(100, 100, 1.0, "Caballerito", [health_potion, mana_potion, boost_potion, empty_potion], [slash_attack, magic_player], Enums.CharacterType.player)
-    enemy = Character(500, 500, 1.0, "Kho'wid", [], [slash_attack, magic_enemy, miss], Enums.CharacterType.enemy)
+    player = Character(100, 100, 1.0, "Caballerito", [health_potion, mana_potion, boost_potion, empty_potion],
+                       [slash_attack, magic_player], Enums.CharacterType.player)
+    enemy = Character(500, 500, 1.0, "Kho'wid", [], [slash_attack, miss, magic_enemy], Enums.CharacterType.enemy)
     actionMenu = None
     whosTurn: Enums.CharacterType = None
 
@@ -37,21 +39,24 @@ class InGame(ScreenProtocol):
         self.screen.blit(border, (0, 0))
         pygame.display.update()
 
-
         while True:
             if clock() > nextFrame:
                 pygame.draw.rect(self.screen, Constants.colors.black, (0, 0, 200, 20))
                 pygame.draw.rect(self.screen, Constants.colors.black, (0, 20, 200, 20))
-                pygame.draw.rect(self.screen, Constants.colors.green, (0,0, 2*(self.player.vida),20))
-                pygame.draw.rect(self.screen, Constants.colors.cyan, (0,20, 2*(self.player.mana),20))
+                pygame.draw.rect(self.screen, Constants.colors.green, (0, 0, 2 * (self.player.vida), 20))
+                pygame.draw.rect(self.screen, Constants.colors.cyan, (0, 20, 2 * (self.player.mana), 20))
                 pygame.draw.rect(self.screen, Constants.colors.black, (600, 0, 200, 20))
-                pygame.draw.rect(self.screen, Constants.colors.red, (600+(200-self.enemy.vida/2.5),0, self.enemy.vida/2.5, 20))
+                pygame.draw.rect(self.screen, Constants.colors.red,
+                                 (600 + (200 - self.enemy.vida / 2.5), 0, self.enemy.vida / 2.5, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightGreen, (200, 0, 100, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightBlue, (200, 20, 100, 20))
                 pygame.draw.rect(self.screen, Constants.colors.lightRed, (530, 0, 70, 20))
-                drawLabel(self.screen, "HP: "+str(self.player.vida), constants.colors.black, constants.colors.trasparent, 20, (202,3))
-                drawLabel(self.screen, "Mana: " + str(self.player.mana), constants.colors.black, constants.colors.trasparent, 20, (202, 23))
-                drawLabel(self.screen, "HP: " + str(self.enemy.vida), constants.colors.black, constants.colors.trasparent, 20, (532, 3))
+                drawLabel(self.screen, "HP: " + str(self.player.vida), constants.colors.black,
+                          constants.colors.trasparent, 20, (202, 3))
+                drawLabel(self.screen, "Mana: " + str(self.player.mana), constants.colors.black,
+                          constants.colors.trasparent, 20, (202, 23))
+                drawLabel(self.screen, "HP: " + str(self.enemy.vida), constants.colors.black,
+                          constants.colors.trasparent, 20, (532, 3))
 
                 if self.player.mana <= 50:
                     drawLabel(self.screen, "LOW!", constants.colors.cyan, constants.colors.trasparent, 20, (150, 23))
@@ -74,14 +79,15 @@ class InGame(ScreenProtocol):
                     if index_a == 1:
                         effectAnimations(Slash, 600, 158, 8, 100, 100)
                         index = 0
-                        self.player.mana -=20
-                        self.player.vida -=15
+                        self.player.mana -= 20
+                        self.player.vida -= 15
 
             self.loadData()
 
     def loadData(self):
         self.actionMenu.updateMenuData(self.player, self.enemy, self.screen)
         self.actionMenu.displayMenu(self.completionForSelectedAttack, self.completionForSelectedItem, self.whosTurn)
+        return True
 
     def completionForSelectedAttack(self):
         print("The user select an attack")
@@ -95,10 +101,35 @@ class InGame(ScreenProtocol):
         elif lastAttack == Enums.inGame.Menu.Attacks.magicPlayer:
             print("Execute animations for Magic attack")
 
+        #Data needs to be reloaded before the enemy can auto-select an attack
+        if self.loadData():
+            self.makeDesitionForTheEnemy()
+
     def completionForSelectedItem(self):
         print("The user select an item")
 
     def redirectToScreen(self, selectedButtonIndex):
-        if selectedButtonIndex == 0: #Exit ~> go mainMenu
+        if selectedButtonIndex == 0:  # Exit ~> go mainMenu
             self.mainManager.initMainMenu()
             return True
+
+    # Enemy's turn
+    def makeDesitionForTheEnemy(self):
+        print("enemy's turn")
+        enemyAttacks = self.enemy.getAttacks()
+        totalAttacks = len(enemyAttacks)
+
+        randomAttack = int(random.uniform(0, totalAttacks))
+
+        self.actionMenu.attackAsEnemy(self.getAttackFromName(enemyAttacks[randomAttack].getName()))
+
+    def getAttackFromName(self, name):
+        if name == "Slash":
+            return Enums.inGame.Menu.Attacks.slash
+        elif name == "Magic Spell":
+            return Enums.inGame.Menu.Attacks.miss
+        elif name == "Miss!":
+            return Enums.inGame.Menu.Attacks.magicEnemy
+        else:
+            print("Unexpected error decoding the attack based on the name, please check the literal strings that is getting compared with.")
+            raise
