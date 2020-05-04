@@ -34,6 +34,10 @@ class Enums:
 
     class inGame:
         class Menu:
+            class States(Enum):
+                baseState = 0
+                inventory = 1
+                attack = 2
             class baseState:
                 class Button(Enum):
                     inventory = 0

@@ -28,6 +28,11 @@ class inGameButtonsInteractor:
     attackMinIndex = 0
     attackMaxIndex = len(attackButtons) - 1
 
+    def __init__(self):
+        self.baseButtonsIndex = 0
+        self.inventoryButtonsIndex = 0
+        self.attackButtonsIndex = 0
+
     def validateBaseButtonsNewIndexPosition(self, actualIndex, direction=Enums.inGame.Menu.baseState.directions.none):
         print("validateBaseButtonsNewIndexPosition")
         directions = Enums.inGame.Menu.baseState.directions

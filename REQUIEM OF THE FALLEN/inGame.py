@@ -24,11 +24,13 @@ class InGame(ScreenProtocol):
 
     player = Character(100, 100, 1.0, "Caballerito", [health_potion, mana_potion, boost_potion, empty_potion], [slash_attack, magic_player], Enums.CharacterType.player)
     enemy = Character(500, 500, 1.0, "Kho'wid", [], [slash_attack, magic_enemy, miss], Enums.CharacterType.enemy)
-
+    actionMenu = None
 
     def __init__(self, screen, mainManager=None):
         self.screen = screen
-
+        self.actionMenu = ActionMenu()
+        self.actionMenu.updateMenuData(self.player, self.enemy, self.screen)
+        self.actionMenu.displayMenu()
 
         if mainManager != None:
             self.mainManager = mainManager
@@ -84,8 +86,8 @@ class InGame(ScreenProtocol):
             self.loadData()
 
     def loadData(self):
-        actionMenu = ActionMenu("player", "enemy", self.screen)
-        actionMenu.displayMenu()
+        self.actionMenu.updateMenuData(self.player, self.enemy, self.screen)
+        self.actionMenu.displayMenu()
 
 
     def redirectToScreen(self, selectedButtonIndex):

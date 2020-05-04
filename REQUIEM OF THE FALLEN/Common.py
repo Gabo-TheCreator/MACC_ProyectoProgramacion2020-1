@@ -25,6 +25,18 @@ bg_tit = cons.extras.bg_tit
 
 BACK_n = cons.botones.BACK_n
 BACK_s = cons.botones.BACK_s
+SLASH_n = cons.botones.SLASH_n
+SLASH_s = cons.botones.SLASH_s
+SPELL_n  = cons.botones.SPELL_n
+SPELL_s  = cons.botones.SPELL_s
+HEALTH_n = cons.botones.HEALTH_n
+HEALTH_s = cons.botones.HEALTH_s
+BOOST_n = cons.botones.BOOST_n
+BOOST_s = cons.botones.BOOST_s
+EMPTY_n = cons.botones.EMPTY_n
+EMPTY_s = cons.botones.EMPTY_s
+MANA_n = cons.botones.MANA_n
+MANA_s = cons.botones.MANA_s
 
 # ======= THEMES/SOUND EFFECTS =============================================
 

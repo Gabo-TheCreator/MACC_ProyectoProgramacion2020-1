@@ -29,15 +29,11 @@ class MainMenu(ScreenProtocol):
                 key = event.key
                 if key == K_LEFT:
                     print("Key left")
-                    self.buttonsInteractor.buttonIndex = self.buttonsInteractor.validateNewIndexPosition(
-                        self.buttonsInteractor.buttonIndex,
-                        Enums.MainMenu.directions.left)
+                    self.buttonsInteractor.buttonIndex = self.buttonsInteractor.validateNewIndexPosition(self.buttonsInteractor.buttonIndex, Enums.MainMenu.directions.left)
                     self.reloadViewsForSelectedButtonInIndex(self.buttonsInteractor.buttonIndex, True)
                 elif key == K_RIGHT:
                     print("Key Right")
-                    self.buttonsInteractor.buttonIndex = self.buttonsInteractor.validateNewIndexPosition(
-                        self.buttonsInteractor.buttonIndex,
-                        Enums.MainMenu.directions.right)
+                    self.buttonsInteractor.buttonIndex = self.buttonsInteractor.validateNewIndexPosition(self.buttonsInteractor.buttonIndex, Enums.MainMenu.directions.right)
                     self.reloadViewsForSelectedButtonInIndex(self.buttonsInteractor.buttonIndex, True)
                 elif key == K_RETURN:
                     if self.redirectToScreen(self.buttonsInteractor.buttonIndex):
