@@ -22,6 +22,8 @@ OK_s = cons.botones.OK_s
 DEL_n = cons.botones.DEL_n
 DEL_s = cons.botones.DEL_s
 bg_tit = cons.extras.bg_tit
+bg_cut = cons.extras.bg_cut
+selection_border = cons.extras.selection_border
 
 BACK_n = cons.botones.BACK_n
 BACK_s = cons.botones.BACK_s

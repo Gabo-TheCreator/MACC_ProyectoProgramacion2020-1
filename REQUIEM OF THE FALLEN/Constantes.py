@@ -145,6 +145,7 @@ class Constants:
         bg_2 = pygame.image.load(img + bg + "stone.png")
         title = pygame.image.load(img + txt + "REQUIEM.png")
         selection_border = pygame.image.load(img + bg + "selection_border.png")
+        bg_cut = pygame.image.load(img + bg + "stonecut.jpg")
 
     # ========================================================================
     # ========== SONIDOS  ====================================================
