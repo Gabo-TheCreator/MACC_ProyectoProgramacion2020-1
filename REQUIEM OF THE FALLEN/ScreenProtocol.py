@@ -10,3 +10,4 @@ class ScreenProtocol:
 
     def loadData(self):
         raise NotImplementedError("loadData Needs to be implemented in all subclasses")
+#Comprobante de que las funciones necesitadas están definidas

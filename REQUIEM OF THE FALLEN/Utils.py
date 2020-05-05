@@ -5,7 +5,7 @@ from enums import Enums
 
 constants = cst.Constants
 
-
+#Funciones que se utilizan a lo largo del juego
 # ======= DRAW TEXT IN COORDS =========================================================
 def drawText(screen, text, coords, color, backgroundColor, size, __time, animationType=Enums.TextAnimations.none):
     shouldBeep = True
@@ -42,13 +42,16 @@ def drawText(screen, text, coords, color, backgroundColor, size, __time, animati
 
     if shouldBeep:
         common.EndLine.play()
+#Función que muestra un texto un caracter a la vez, con una animación determinada en "none" si se desea la animación más rápida poisble
+#o "typewriter" si se desea regular la velocidad
+#Reproduce un sonido cada 8 caracteres para no saturar las salidas de audio ni al jugador
 
 # ======= PLAY MUSIC =========================================================
 def music(song, times): #Añadir música
     print("PLaying music")
     pygame.mixer.music.load(constants.musica.mus+song)
     pygame.mixer.music.play(times)
-
+#Simplificación de la función para reproducir música
 def waitBeforeLoadingNextActions(screen):
     if screen == Enums.Screens.about:
         pygame.time.wait(1000)
@@ -58,8 +61,9 @@ def waitBeforeLoadingNextActions(screen):
 
     elif screen == Enums.Screens.inGame:
         pygame.time.wait(1000)
-
+#Simplificación de añadir un tiempo de espera, dependiendo de la pantalla en que se encuentre
 def drawLabel(screen, text, color, background, size, coord):
     font = pygame.font.Font(constants.generalSettings.generalFont, size)
     showText = font.render(text, True, color, background)
     screen.blit(showText, coord)
+#Similar al drawText, esta función muestra un texto sin animación alguna

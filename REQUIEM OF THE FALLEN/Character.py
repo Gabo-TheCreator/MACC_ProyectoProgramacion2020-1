@@ -41,3 +41,4 @@ class Character:
 
     def getType(self):
         return self.tipo
+#Definición de los argumentos de los personajes

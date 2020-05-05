@@ -35,6 +35,7 @@ addSpriteImage(caballero, img + spr + idle + cab + "caballerito_idle1.png")
 addSpriteImage(caballero, img + spr + idle + cab + "caballerito_idle2.png")
 addSpriteImage(caballero, img + spr + idle + cab + "caballerito_idle3.png")
 addSpriteImage(caballero, img + spr + idle + cab + "caballerito_idle4.png")
+#Define los sprites del caballero en reposo
 
 caballeroA = makeSprite(img + spr + att + cab + "caballerito_attack0.png")
 addSpriteImage(caballeroA, img + spr + att + cab + "caballerito_attack1.png")
@@ -45,12 +46,15 @@ addSpriteImage(caballeroA, img + spr + att + cab + "caballerito_attack5.png")
 addSpriteImage(caballeroA, img + spr + att + cab + "caballerito_attack6.png")
 addSpriteImage(caballeroA, img + spr + att + cab + "caballerito_attack7.png")
 addSpriteImage(caballeroA, img + spr + att + cab + "caballerito_attack8.png")
+#Define los sprites del caballero en ataque
+
 
 virus = makeSprite(img + spr + idle + vir + "Virus_idle0.png")
 addSpriteImage(virus, img + spr + idle + vir + "Virus_idle1.png")
 addSpriteImage(virus, img + spr + idle + vir + "Virus_idle2.png")
 addSpriteImage(virus, img + spr + idle + vir + "Virus_idle3.png")
 addSpriteImage(virus, img + spr + idle + vir + "Virus_idle4.png")
+#Define los sprites del virus en reposo
 
 # =============== ATTACK EFFECTS AND OBJECT CREATION =================== #
 
@@ -62,6 +66,7 @@ addSpriteImage(Slash, img + spr + sfx + slash + "slash4.png")
 addSpriteImage(Slash, img + spr + sfx + slash + "slash5.png")
 addSpriteImage(Slash, img + spr + sfx + slash + "slash6.png")
 addSpriteImage(Slash, img + spr + sfx + slash + "slash7.png")
+#Define los sprites del espadazo
 
 Magic = makeSprite(img + spr + sfx + mag + "magic_effect0.png")
 addSpriteImage(Magic, img + spr + sfx + mag + "magic_effect1.png")
@@ -75,12 +80,13 @@ addSpriteImage(Magic, img + spr + sfx + mag + "magic_effect8.png")
 addSpriteImage(Magic, img + spr + sfx + mag + "magic_effect9.png")
 addSpriteImage(Magic, img + spr + sfx + mag + "magic_effect10.png")
 addSpriteImage(Magic, img + spr + sfx + mag + "magic_effect11.png")
+#Define los sprites del hechizo
 
 slash_attack = Ataque(10, 0, "Slash", 1.0)
 magic_enemy = Ataque(15, 0, "Magic Spell", 1.0)
 magic_player = Ataque(30, 10, "Magic Spell", 1.0)
 miss = Ataque(0, 0, "Miss!", 1.0)
-
+#define los tipos de ataques
 # =============== ITEM SPRITES AND OBJECT CREATION =================== #
 
 health_bottle = pygame.image.load(img + spr + inv + "Botella_health.png")
@@ -93,11 +99,12 @@ boost_potion = Item(0, 0, 1.5, "Boost Potion", boost_bottle)
 empty_potion = Item(0, 0, 0, "Empty Bottle", empty_bottle)
 mana_potion = Item(0, 50, 0, "Mana Potion", mana_bottle)
 
+#Define los valores de las pociones (Inutilizado)
 
 # =============== ANIMATION FUNCTIONS =================== #
 nextFrame = clock()
 frame = 1
-
+#Inicia el tiempo y el frame
 def idleAnimations():
     global frame, nextFrame
     hideSprite(caballeroA)
@@ -113,7 +120,7 @@ def idleAnimations():
     changeSpriteImage(caballero, 0 * 5 + frame)
     changeSpriteImage(virus, 0 * 5 + frame)
     pygame.time.wait(100)
-
+    #Genera la animación simultánea del enemigo y el jugador
 
 def attackAnimations(SpriteName, xcor, ycor, pngnum, frameaddition, waitTime):
     global frame, nextFrame
@@ -123,6 +130,7 @@ def attackAnimations(SpriteName, xcor, ycor, pngnum, frameaddition, waitTime):
     nextFrame += frameaddition
     changeSpriteImage(SpriteName, 0 * pngnum + frame)
     pygame.time.wait(waitTime)
+    #Muestra la animación del personajer seleccionado, con los argumentos dados
 
 
 def effectAnimations(EffectName, xcor, ycor, pngnum, frameaddition, waitTime):
@@ -133,3 +141,4 @@ def effectAnimations(EffectName, xcor, ycor, pngnum, frameaddition, waitTime):
     nextFrame += frameaddition
     changeSpriteImage(EffectName, 0 * pngnum + frame)
     pygame.time.wait(waitTime)
+    #Muestra la animación del efecto seleccionado con los argumentos dados

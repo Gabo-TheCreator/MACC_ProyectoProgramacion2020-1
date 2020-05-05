@@ -19,7 +19,10 @@ inv = "Inventory/"
 slash = "Slash/"
 mag = "Magic/"
 pygame.mixer.init()
+#Se definen los prefijos para la ruta que usa pygame al buscar un archivo
 
+#A lo largo de esta página se crean las clases de todos los archivos que se van a usar,
+#a excepción de las melodías.
 
 # # ====================================================================
 class Constants:
@@ -215,6 +218,10 @@ class Constants:
     # ========================================================================
     # ========  COLORES  =====================================================
     class colors:
+        #Los colores fueron creados con los códigos RGB
+        #Nótese que el transparente se define con un único cero (0), ya que pygame,
+        #al no identificar un único valor, no lo representa de ninguna manera, y es
+        #incoloro
         trasparent = (0)
         white = (255,255,255)
         black = (0,0,0)

@@ -1,7 +1,7 @@
 # pygame_functions
 
-# Documentation at www.github.com/stevepaget/pygame_functions
-# Report bugs at https://github.com/StevePaget/Pygame_Functions/issues
+# funciones simplificadas de pygame extraídas desde  www.github.com/stevepaget/pygame_functions
+# (nota del creador) Report bugs at https://github.com/StevePaget/Pygame_Functions/issues
 
 
 import pygame, math, sys, os

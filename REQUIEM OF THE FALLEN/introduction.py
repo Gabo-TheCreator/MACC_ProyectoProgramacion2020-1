@@ -27,6 +27,7 @@ class Introduction(ScreenProtocol):
         # Initialize
         self.common.Confirm.play()
         waitBeforeLoadingNextActions(self.mainManager.screenState)
+        music(self.common.menu_theme, -1)
         self.screen.blit(Constants.extras.bg_2, (0, 0))
         pygame.display.update()
         drawText(self.screen, "REQUIEM OF THE FALLEN", (110,100), self.cons.colors.lightPurple, self.cons.colors.trasparent,60,0.2,
@@ -43,6 +44,7 @@ class Introduction(ScreenProtocol):
                  Enums.TextAnimations.typewriter)
         drawText(self.screen, "relies on you.", (90, 340), self.cons.colors.cyan, self.cons.colors.trasparent, 50, 100,
                  Enums.TextAnimations.typewriter)
+        #Se dibujan las líneas del texto de introducción
         self.screen.blit(Common.PLAY_s, (300, 500))
         pygame.display.update()
         while True:
@@ -54,6 +56,7 @@ class Introduction(ScreenProtocol):
                     Common.Confirm.play()
                     waitBeforeLoadingNextActions(self.mainManager.screenState)
                     break
+        #Se muestra el botón para continuar y se espera a que el jugador lo seleccione
         
         self.screen.blit(Constants.extras.bg_2, (0, 0))
         pygame.display.update()
@@ -72,6 +75,7 @@ class Introduction(ScreenProtocol):
                  self.cons.colors.trasparent, 30, 100,
                  Enums.TextAnimations.typewriter)
         pygame.time.wait(500)
+        drawLabel(self.screen, "Coming Soon!", Constants.colors.white, Constants.colors.trasparent, 20, (146.5, 380))
         self.screen.blit(Constants.botones.INVENTORY_n, (146.6, 400))
         Common.Beep.play()
         pygame.display.update()
@@ -95,6 +99,9 @@ class Introduction(ScreenProtocol):
                     waitBeforeLoadingNextActions(self.mainManager.screenState)
                     if self.redirectToScreen(0):
                         break
+                    #Al seleccionar, se define que al salir del ciclo, se redirige a la pantalla seleccionada
+        #Se da un pequeño tutorial al jugador para decirle cuál es su rol en el juego,
+        #para nuevamente, mostrar el botón para continuar y esperar a que el jugador lo presione
 
     def loadData(self):
         print("loadData")
@@ -103,3 +110,4 @@ class Introduction(ScreenProtocol):
         if selectedButtonIndex == 0: #Exit ~> go mainMenu
             self.mainManager.initInGame()
             return True
+    #Redirección a la pantalla de juego

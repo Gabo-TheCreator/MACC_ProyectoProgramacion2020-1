@@ -7,7 +7,8 @@ cons = Constantes.Constants()
 # Init all needed variables
 # ======= SPRITES =========================================================
 
-
+#A lo largo de toda esta página, se recogen los archivos más utilizados desde el módulo
+#Constantes.py para utilizarse más eficientemente
 # ======= BOTONES =========================================================
 awa = cons.botones.awa
 title = cons.extras.title
@@ -45,6 +46,8 @@ MANA_s = cons.botones.MANA_s
 mus = cons.musica.mus
 main_theme = "theme.mp3"
 menu_theme = "name.mp3"
+battle = "battle.mp3"
+about_mus = "About_mus.mp3"
 low_mana = cons.efectos.low_mana
 low_hp = cons.efectos.low_hp
 exit_sfx = cons.efectos.exit_sfx

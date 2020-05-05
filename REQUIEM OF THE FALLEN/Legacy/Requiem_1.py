@@ -2,6 +2,8 @@ import pygame
 import Letra_one_by_one as one
 import Constantes
 import Common
+
+#Fase "beta" del juego, probando cómo utilizar los ciclos y manejar los botones de selección
 # =============================================================================
 # DEFINICIÓN DE VARIABLES
 index_about = 0  #Valor único para la selección del botón en la pantalla de créditos
